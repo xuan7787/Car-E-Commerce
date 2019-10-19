@@ -1,0 +1,81 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:lv="nativescript-ui-listview"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <!-- Search Results -->
+    <ScrollView class="searchResultsScrollView" id="searchResultsScrollView">
+
+      <lv:RadListView class="searchResultsListView"
+        items="{{searchResultData}}"
+        itemTap="{{onTapCarEntry}}"
+        id="searchResultsListView"
+        width="{{viewWidth}}">
+  			<lv:RadListView.listViewLayout>
+  				<lv:ListViewStaggeredLayout scrollDirection="Vertical" spanCount="2" />
+  			</lv:RadListView.listViewLayout>
+
+  			<lv:RadListView.itemTemplate>
+          <Card:CardView class="{{index == 1 ? 'searchResultItemCard secondCard' : 'searchResultItemCard'}}" 
+            overflow="hidden" height="{{ $parents['Page'].cardHeight }}">
+
+            <StackLayout>
+              <GridLayout class="searchResultCarImageContainer" height="{{ $parents['Page'].cardWidth }}">
+                <Image class="searchResultCarImage"
+                  src="~/images/graphics/image_placeholder_caratmbs.jpg" height="{{ $parents['Page'].cardWidth }}"/>
+                <Image class="searchResultFavouriteButtonImage"
+                  src="~/images/buttons/button_listing_favourite_inactive.png"
+                  opacity="{{$parents['RadListView'].searchResultFavouriteButtonOpacity}}"
+                  visibility="{{ !favourited ? 'visible' : 'collapsed'}}"
+                  id="inactiveFavouriteButton"/>
+                <Image class="searchResultFavouriteButtonImage"
+                  src="~/images/buttons/button_listing_favourite_active.png"
+                  opacity="{{$parents['RadListView'].searchResultFavouriteButtonOpacity}}"
+                  visibility="{{ favourited ? 'visible' : 'collapsed'}}"
+                  id="activeFavouriteButton"/>
+                <Image class="searchResultFavouriteButtonTapArea" tap="{{onTapFavouriteListingButton}}"
+                  xpostid="{{id}}" xindex="{{index}}"/>
+              </GridLayout>
+              <Label class="searchResultCarName" text="{{name}}"/>
+              <StackLayout class="infoRow first">
+                <Image class="innerIcon"
+                  src="~/images/icons/icon_calendar.png"/>
+                <Label class="infoLabel timeRemaining"
+                  text="4 years left"/>
+                <Image class="innerIcon"
+                  src="~/images/icons/icon_key.png"/>
+                <Label class="infoLabel ownersCount"
+                  text="{{owners}}"/>
+              </StackLayout>
+              <StackLayout class="infoRow second">
+                <Image class="innerIcon"
+                  src="~/images/icons/icon_mileage.png"/>
+                <Label class="infoLabel mileage"
+                  text="{{mileage}}"/>
+              </StackLayout>
+              <Label class="priceLabel"
+                text="{{'$' + price}}"/>
+              <DockLayout class="infoRow third" stretchLastChild="false">
+                <Image class="innerIcon" dock="left"
+                  src="~/images/icons/icon_share.png"/>
+                <Label class="infoLabel" dock="right"
+                  text="$5,420 yearly"/>
+                <Label class="spacingAfterShare" />
+                <Image class="innerIcon" dock="right"
+                  src="~/images/icons/icon_depreciation.png"/>
+              </DockLayout>
+
+            </StackLayout>
+
+          </Card:CardView>
+
+  			</lv:RadListView.itemTemplate>
+  		</lv:RadListView>
+
+    </ScrollView>
+
+
+  </GridLayout>
+
+</Page>

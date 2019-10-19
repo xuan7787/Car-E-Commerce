@@ -1,0 +1,443 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:lv="nativescript-ui-listview"
+  actionBarHidden="true">
+  <AbsoluteLayout width="100%" height="100%">
+    <!-- Search Settings Lists -->
+    <ScrollView width="100%" height="100%">
+      <StackLayout class="searchSettingsStackLayout" width="{{ viewWidth }}">
+        <Label class="searchesHeadingLabel"
+          text="Searches"/>
+        <!-- Saved -->
+        <GridLayout class="settingsSection">
+          <StackLayout>
+            <StackLayout class="savedSearchesHeading">
+              <Image class="headingIcon" src="~/images/icons/icon_yellowstar.png"/>
+              <Label class="sectionHeadingLabel" text="Saved"/>
+            </StackLayout>
+
+            <FlexboxLayout class="wrappedItemList">
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[0])}}"
+                index="0" tap="{{onTapSavedSearchSetting}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 0 ? selectedTagColor : unselectedTagColor}}"
+                visibility="{{savedSearchSettings[0] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[1])}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 1 ? selectedTagColor : unselectedTagColor}}"
+                index="1" tap="{{onTapSavedSearchSetting}}"
+                visibility="{{savedSearchSettings[1] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[2])}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 2 ? selectedTagColor : unselectedTagColor}}"
+                index="2" tap="{{onTapSavedSearchSetting}}"
+                visibility="{{savedSearchSettings[2] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[3])}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 3 ? selectedTagColor : unselectedTagColor}}"
+                index="3" tap="{{onTapSavedSearchSetting}}"
+                visibility="{{savedSearchSettings[3] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[4])}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 4 ? selectedTagColor : unselectedTagColor}}"
+                index="4" tap="{{onTapSavedSearchSetting}}"
+                visibility="{{savedSearchSettings[4] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[5])}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 5 ? selectedTagColor : unselectedTagColor}}"
+                index="5" tap="{{onTapSavedSearchSetting}}"
+                visibility="{{savedSearchSettings[5] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[6])}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 6 ? selectedTagColor : unselectedTagColor}}"
+                index="6" tap="{{onTapSavedSearchSetting}}"
+                visibility="{{savedSearchSettings[6] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(savedSearchSettings[7])}}"
+                backgroundColor="{{savedSearchSettingsHighlightedIndex == 7 ? selectedTagColor : unselectedTagColor}}"
+                index="7" tap="{{onTapSavedSearchSetting}}"
+                visibility="{{savedSearchSettings[7] ? 'visible' : 'collapse'}}"/>
+
+              <Label class="item" text="..."
+                visibility="{{savedSearchSettings[8] ? 'visible' : 'collapse'}}"/>
+            </FlexboxLayout>
+          </StackLayout>
+          <StackLayout col="1">
+            <Image class="deleteButton"
+              src="~/images/icons/icon_delete.png"
+              opacity="{{savedSearchSettingsHighlightedIndex == -1 ? 0.5 : 1}}"
+              tap="{{onTapDeleteSavedSearchSetting}}"/>
+          </StackLayout>
+        </GridLayout>
+        <!-- Recent -->
+        <GridLayout class="settingsSection">
+          <StackLayout>
+            <StackLayout class="savedSearchesHeading">
+              <Image class="headingIcon" src="~/images/icons/icon_grayclock.png"/>
+              <Label class="sectionHeadingLabel" text="Recent"/>
+            </StackLayout>
+            <FlexboxLayout class="wrappedItemList">
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[0])}}"
+                index="0" tap="{{onTapRecentSearchSetting}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 0 ? selectedTagColor : unselectedTagColor}}"
+                visibility="{{recentSearchSettings[0] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[1])}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 1 ? selectedTagColor : unselectedTagColor}}"
+                index="1" tap="{{onTapRecentSearchSetting}}"
+                visibility="{{recentSearchSettings[1] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[2])}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 2 ? selectedTagColor : unselectedTagColor}}"
+                index="2" tap="{{onTapRecentSearchSetting}}"
+                visibility="{{recentSearchSettings[2] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[3])}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 3 ? selectedTagColor : unselectedTagColor}}"
+                index="3" tap="{{onTapRecentSearchSetting}}"
+                visibility="{{recentSearchSettings[3] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[4])}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 4 ? selectedTagColor : unselectedTagColor}}"
+                index="4" tap="{{onTapRecentSearchSetting}}"
+                visibility="{{recentSearchSettings[4] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[5])}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 5 ? selectedTagColor : unselectedTagColor}}"
+                index="5" tap="{{onTapRecentSearchSetting}}"
+                visibility="{{recentSearchSettings[5] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[6])}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 6 ? selectedTagColor : unselectedTagColor}}"
+                index="6" tap="{{onTapRecentSearchSetting}}"
+                visibility="{{recentSearchSettings[6] ? 'visible' : 'collapse'}}"/>
+              <Label class="item" text="{{getSearchSettingDisplayString(recentSearchSettings[7])}}"
+                backgroundColor="{{recentSearchSettingsHighlightedIndex == 7 ? selectedTagColor : unselectedTagColor}}"
+                index="7" tap="{{onTapRecentSearchSetting}}"
+                visibility="{{recentSearchSettings[7] ? 'visible' : 'collapse'}}"/>
+
+              <Label class="item" text="..."
+                visibility="{{recentSearchSettings[8] ? 'visible' : 'collapse'}}"/>
+            </FlexboxLayout>
+          </StackLayout>
+          <StackLayout col="1">
+            <Image class="deleteButton"
+              src="~/images/icons/icon_delete.png"
+              opacity="{{recentSearchSettingsHighlightedIndex == -1 ? 0.5 : 1}}"
+              tap="{{onTapDeleteRecentSearchSetting}}"/>
+          </StackLayout>
+        </GridLayout>
+        <!-- Trending -->
+        <StackLayout class="savedSearchesHeading">
+          <Image class="headingIcon" src="~/images/icons/icon_trending.png"/>
+          <Label class="sectionHeadingLabel" text="Trending"/>
+        </StackLayout>
+        <FlexboxLayout class="wrappedItemList">
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[0])}}"
+            index="0" tap="{{onTapTrendingSearchSetting}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 0 ? selectedTagColor : unselectedTagColor}}"
+            visibility="{{trendingSearchSettings[0] ? 'visible' : 'collapse'}}"/>
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[1])}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 1 ? selectedTagColor : unselectedTagColor}}"
+            index="1" tap="{{onTapTrendingSearchSetting}}"
+            visibility="{{trendingSearchSettings[1] ? 'visible' : 'collapse'}}"/>
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[2])}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 2 ? selectedTagColor : unselectedTagColor}}"
+            index="2" tap="{{onTapTrendingSearchSetting}}"
+            visibility="{{trendingSearchSettings[2] ? 'visible' : 'collapse'}}"/>
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[3])}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 3 ? selectedTagColor : unselectedTagColor}}"
+            index="3" tap="{{onTapTrendingSearchSetting}}"
+            visibility="{{trendingSearchSettings[3] ? 'visible' : 'collapse'}}"/>
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[4])}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 4 ? selectedTagColor : unselectedTagColor}}"
+            index="4" tap="{{onTapTrendingSearchSetting}}"
+            visibility="{{trendingSearchSettings[4] ? 'visible' : 'collapse'}}"/>
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[5])}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 5 ? selectedTagColor : unselectedTagColor}}"
+            index="5" tap="{{onTapTrendingSearchSetting}}"
+            visibility="{{trendingSearchSettings[5] ? 'visible' : 'collapse'}}"/>
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[6])}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 6 ? selectedTagColor : unselectedTagColor}}"
+            index="6" tap="{{onTapTrendingSearchSetting}}"
+            visibility="{{trendingSearchSettings[6] ? 'visible' : 'collapse'}}"/>
+          <Label class="item" text="{{getSearchSettingDisplayString(trendingSearchSettings[7])}}"
+            backgroundColor="{{trendingSearchSettingsHighlightedIndex == 7 ? selectedTagColor : unselectedTagColor}}"
+            index="7" tap="{{onTapTrendingSearchSetting}}"
+            visibility="{{trendingSearchSettings[7] ? 'visible' : 'collapse'}}"/>
+
+          <Label class="item" text="..."
+            visibility="{{trendingSearchSettings[8] ? 'visible' : 'collapse'}}"/>
+        </FlexboxLayout>
+        <!-- Search Settings Heading -->
+        <DockLayout class="searchSettingsHeading" stretchLastChild="false">
+          <Image class="searchSettingsIcon" dock="left" src="~/images/icons/icon_settings_monochrome.png"/>
+          <Image class="searchSettingsResetButton" dock="right" tap="{{ onTapSearchSettingsResetButton }}"
+            src="~/images/buttons/button_searchsettings_reset.png"/>
+          <Label class="searchSettingsHeadingLabel" dock="top" text="Search Settings"/>
+          <Label class="searchSettingsResultCountLabel" dock="top" text="1288 results"/>
+        </DockLayout>
+        <!-- Sort By -->
+        <StackLayout class="sortBySection">
+          <Label class="sectionHeadingLabel" text="Sort By"/>
+          <FlexboxLayout class="wrappedItemList">
+            <Label class="item" text="{{sortBySettingLabelStrings[0]}}"
+              backgroundColor="{{sortBySettingIndex == 0 ? selectedTagColor: unselectedTagColor}}"
+              tap="{{onTapSortBySetting}}"
+              index="0"/>
+            <Label class="item" text="{{sortBySettingLabelStrings[1]}}"
+              backgroundColor="{{sortBySettingIndex == 1 ? selectedTagColor: unselectedTagColor}}"
+              tap="{{onTapSortBySetting}}"
+              index="1"/>
+            <Label class="item" text="{{sortBySettingLabelStrings[2]}}"
+              backgroundColor="{{sortBySettingIndex == 2 ? selectedTagColor: unselectedTagColor}}"
+              tap="{{onTapSortBySetting}}"
+              index="2"/>
+            <Label class="item" text="{{sortBySettingLabelStrings[3]}}"
+              backgroundColor="{{sortBySettingIndex == 3 ? selectedTagColor: unselectedTagColor}}"
+              tap="{{onTapSortBySetting}}"
+              index="3"/>
+            <Label class="item" text="{{sortBySettingLabelStrings[4]}}"
+              backgroundColor="{{sortBySettingIndex == 4 ? selectedTagColor: unselectedTagColor}}"
+              tap="{{onTapSortBySetting}}"
+              index="4"/>
+          </FlexboxLayout>
+        </StackLayout>
+        <!-- Type -->
+        <StackLayout class="typeSection">
+          <Label class="sectionHeadingLabel" text="Type"/>
+          <GridLayout class="typeGridLayout">
+            <StackLayout row="0" col="0" class="carTypeStack" index="0" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[0] ? selectedBackgroundColor : 'transparent'}}">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_hatchback.png"/>
+              <Label class="carTypeLabel" text="Hatchback"/>
+            </StackLayout>
+            <StackLayout row="0" col="1" class="carTypeStack" index="1" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[1] ? selectedBackgroundColor : 'transparent'}}">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_sedan.png"/>
+              <Label class="carTypeLabel" text="Sedan"/>
+            </StackLayout>
+            <StackLayout row="0" col="2" class="carTypeStack" index="2" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[2] ? selectedBackgroundColor : 'transparent'}}">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_convertible.png"/>
+              <Label class="carTypeLabel" text="Convertible"/>
+            </StackLayout>
+            <StackLayout row="0" col="3" class="carTypeStack" index="3" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[3] ? selectedBackgroundColor : 'transparent'}}"
+                style="margin-right: 0">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_passenger.png"/>
+              <Label class="carTypeLabel" text="Passenger"/>
+            </StackLayout>
+            <StackLayout row="1" col="0" class="carTypeStack" index="4" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[4] ? selectedBackgroundColor : 'transparent'}}">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_mpv.png"/>
+              <Label class="carTypeLabel" text="MPV"/>
+            </StackLayout>
+            <StackLayout row="1" col="1" class="carTypeStack" index="5" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[5] ? selectedBackgroundColor : 'transparent'}}">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_suv.png"/>
+              <Label class="carTypeLabel" text="SUV"/>
+            </StackLayout>
+            <StackLayout row="1" col="2" class="carTypeStack" index="6" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[6] ? selectedBackgroundColor : 'transparent'}}">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_sport.png"/>
+              <Label class="carTypeLabel" text="Sport"/>
+            </StackLayout>
+            <StackLayout row="1" col="3" class="carTypeStack" index="7" tap="{{onTapCarType}}"
+                backgroundColor="{{carTypeSelectionMap[7] ? selectedBackgroundColor : 'transparent'}}"
+                style="margin-right: 0">
+              <Image class="carTypeImage" src="~/images/graphics/image_cartype_others.png"/>
+              <Label class="carTypeLabel" text="Others"/>
+            </StackLayout>
+          </GridLayout>
+        </StackLayout>
+        <!-- Make -->
+        <StackLayout class="makeSection">
+          <Label class="sectionHeadingLabel" text="Make"/>
+          <WrapLayout style="width:100%">
+            <Image class="makeImage" src="~/images/graphics/image_brand_audi.png"
+              index="0"
+              backgroundColor="{{carMakeSelectionMap[0] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_bmw.png"
+              index="1"
+              backgroundColor="{{carMakeSelectionMap[1] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_datsun.png"
+              index="2"
+              backgroundColor="{{carMakeSelectionMap[2] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_ferrari.png"
+              index="3"
+              backgroundColor="{{carMakeSelectionMap[3] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_fiat.png"
+              index="4"
+              backgroundColor="{{carMakeSelectionMap[4] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_honda.png"
+              index="5"
+              backgroundColor="{{carMakeSelectionMap[5] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_hyundai.png"
+              index="6"
+              backgroundColor="{{carMakeSelectionMap[6] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_lexus.png"
+              index="7"
+              backgroundColor="{{carMakeSelectionMap[7] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_mercedesbenz.png"
+              index="8"
+              backgroundColor="{{carMakeSelectionMap[8] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_mitsubishi.png"
+              index="9"
+              backgroundColor="{{carMakeSelectionMap[9] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_nissan.png"
+              index="10"
+              backgroundColor="{{carMakeSelectionMap[10] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_renault.png"
+              index="11"
+              backgroundColor="{{carMakeSelectionMap[11] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_rollsroyce.png"
+              index="12"
+              backgroundColor="{{carMakeSelectionMap[12] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_toyota.png"
+              index="13"
+              backgroundColor="{{carMakeSelectionMap[13] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+          </WrapLayout>
+
+          <!-- More makes -->
+          <WrapLayout style="width:100%" visibility="{{ showMoreMake ? 'visible' : 'collapsed' }}">
+            <Image class="makeImage" src="~/images/graphics/image_brand_alfaromeo.png"
+              index="14"
+              backgroundColor="{{carMakeSelectionMap[14] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_astonmartin.png"
+              index="15"
+              backgroundColor="{{carMakeSelectionMap[15] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_austin.png"
+              index="16"
+              backgroundColor="{{carMakeSelectionMap[16] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_bentley.png"
+              index="17"
+              backgroundColor="{{carMakeSelectionMap[17] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_chery.png"
+              index="18"
+              backgroundColor="{{carMakeSelectionMap[18] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_chevrolet.png"
+              index="19"
+              backgroundColor="{{carMakeSelectionMap[19] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_chrysler.png"
+              index="20"
+              backgroundColor="{{carMakeSelectionMap[20] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_citroen.png"
+              index="21"
+              backgroundColor="{{carMakeSelectionMap[21] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_daihatsu.png"
+              index="22"
+              backgroundColor="{{carMakeSelectionMap[22] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_ford.png"
+              index="23"
+              backgroundColor="{{carMakeSelectionMap[23] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_geely.png"
+              index="24"
+              backgroundColor="{{carMakeSelectionMap[24] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_lamboghini.png"
+              index="25"
+              backgroundColor="{{carMakeSelectionMap[25] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_porsche.png"
+              index="26"
+              backgroundColor="{{carMakeSelectionMap[26] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_proton.png"
+              index="27"
+              backgroundColor="{{carMakeSelectionMap[27] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_subaru.png"
+              index="28"
+              backgroundColor="{{carMakeSelectionMap[28] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_suzuki.png"
+              index="29"
+              backgroundColor="{{carMakeSelectionMap[29] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_volkswagen.png"
+              index="30"
+              backgroundColor="{{carMakeSelectionMap[30] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+            <Image class="makeImage" src="~/images/graphics/image_brand_volvo.png"
+              index="31"
+              backgroundColor="{{carMakeSelectionMap[31] ? selectedBackgroundColor : 'transparent'}}"
+              tap="{{onTapCarMake}}"/>
+          </WrapLayout>
+        </StackLayout>
+
+        <!-- Button to display more make -->
+        <StackLayout orientation="horizontal">
+          <Label class="moreButton" text="{{ showMoreMake ? 'Less..' : 'More..'}}" tap="{{ onTapShowMoreMake }}"/>
+        </StackLayout>
+
+        <!-- Budget -->
+        <Label class="sectionHeadingLabel" text="Budget" style="margin-top: 10"/>
+        <Image src="~/images/graphics/image_placeholder_searchchart1.png"/>
+        
+        <!-- Depreciation -->
+        <Label class="sectionHeadingLabel" text="Depreciation" style="margin-top: 10"/>
+        <Label class="sectionSubHeadingLabel" text="per year"/>
+        <Image src="~/images/graphics/image_placeholder_searchchart2.png"/>
+
+        <!-- Installment -->
+        <Label class="sectionHeadingLabel" text="Installment" style="margin-top: 10"/>
+        <Label class="sectionSubHeadingLabel" text="Monthly"/>
+        <Image src="~/images/graphics/image_placeholder_searchchart3.png"/>
+
+
+        <!-- StackLayout row which contains Transmission, Seats and Doors-->
+        <StackLayout class="transmissionSeatsDoorsSection" orientation="horizontal">
+          <StackLayout id="transmissionFormGroup" style="width:40%">
+            <Label class="sectionHeadingLabel" text="Transmission"/>
+            <StackLayout orientation="horizontal">
+              <Label text="Automatic" id="transmissionAutomaticButton"
+                  class="transmissionButton" tap="{{onTapTransmissionAutomatic}}"
+                  backgroundColor="{{isTransmissionManual ? unselectedTagColor : selectedTagColor}}"
+                  style="margin-right:5"/>
+              <Label text="Manual" id="transmissionManualButton"
+                  class="transmissionButton" tap="{{onTapTransmissionManual}}"
+                  backgroundColor="{{isTransmissionManual ? selectedTagColor : unselectedTagColor}}"/>
+            </StackLayout>
+          </StackLayout>
+          <StackLayout id="seatsFormGroup" style="width:30%">
+            <Label class="sectionHeadingLabel" text="Seats"/>
+            <StackLayout orientation="horizontal" width="100%">
+              <Label class="seatsDoorsAddSubtractButton" text="+" width="33%" tap="{{onTapIncreaseSeatCount}}"/>
+              <StackLayout width="33%">
+                <Label class="seatsDoorsDisplayBox"
+                  text="{{seatsInput}}"/>
+              </StackLayout>
+              <Label class="seatsDoorsAddSubtractButton" text="—" width="33%" tap="{{onTapDecreaseSeatCount}}"/>
+            </StackLayout>
+          </StackLayout>
+          <StackLayout id="doorsFormGroup" style="width:30%">
+            <Label class="sectionHeadingLabel" text="Doors"/>
+            <StackLayout orientation="horizontal" width="100%">
+              <Label class="seatsDoorsAddSubtractButton" text="+" width="33%" tap="{{onTapIncreaseDoorCount}}"/>
+              <StackLayout width="33%">
+                <Label class="seatsDoorsDisplayBox"
+                  text="{{doorsInput}}"/>
+              </StackLayout>
+              <Label class="seatsDoorsAddSubtractButton" text="—" width="33%" tap="{{onTapDecreaseDoorCount}}"/>
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+
+
+  </AbsoluteLayout>
+
+</Page>

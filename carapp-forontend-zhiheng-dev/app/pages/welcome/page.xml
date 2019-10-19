@@ -1,0 +1,36 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Loading="components/loading"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <StackLayout class="mainStackLayout" width="100%">
+      <Label class="welcomeToLabel" text="Welcome to"/>
+      <Label class="heading square">
+        <FormattedString>
+          <Span text="Square" color="#FF415F"/>
+          <Span text="." color="#3889FB"/>
+        </FormattedString>
+      </Label>
+      <Image class="appImage" horizontalAlignment="center" src="~/images/graphics/image_squareapp.png"/>
+      <Label class="appDescriptionLabel the" text="The Most Comprehensive"/>
+      <Label class="appDescriptionLabel" text="Mobile marketplace, crafted"/>
+      <Label class="appDescriptionLabel" text="for your experience"/>
+    </StackLayout>
+    <StackLayout class="acronymSection" verticalAlignment="bottom" width="100%">
+      <Label class="acronym">
+        <FormattedString>
+          <Span text="S" color="#FF415F"/>
+          <Span text="e" color="silver"/>
+          <Span text="qu" color="#FF415F"/>
+          <Span text="ential " color="silver"/>
+          <Span text="A" color="#FF415F"/>
+          <Span text="utomobiles " color="silver"/>
+          <Span text="R" color="#FF415F"/>
+          <Span text="equisition " color="silver"/>
+          <Span text="E" color="#FF415F"/>
+          <Span text="xperience" color="silver"/>
+        </FormattedString>
+      </Label>
+    </StackLayout>
+  </GridLayout>
+</Page>

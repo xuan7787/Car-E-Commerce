@@ -1,0 +1,92 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Login="components/login"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <!-- Cancel Button section-->
+    <StackLayout width="100%" verticalAlignment="top" style="padding-top: 20; padding-left: 30;">
+      <Label text="Cancel" style="font-weight: 500; color: #FF415F" tap="{{ onTapCancelButton }}"/>
+    </StackLayout>
+
+    <StackLayout width="100%" class="mainStackLayout">
+      <Image class="signUpImage" horizontalAlignment="center" verticalAlignment="top" src="~/images/graphics/image_phonesignup.png"/>
+      
+      <!-- First Row -->
+      <TextField class="inputField usernameField" horizontalAlignment="stretch" verticalAlignment="top"
+        hint="Username" id="usernameField" returnKeyType="next" returnPress="{{ onTapKeyboardNext }}"
+        text="{{usernameInput}}"/>
+
+      <!-- Second Row -->
+      <StackLayout class="secondRow" orientation="horizontal" horizontalAlignment="stretch" verticalAlignment="top">
+        <Label text="+65" style="font-size: 20; color: #FF415F; margin-right: 8; font-weight: 500"/>
+        <TextField class="inputField phoneNumberField" width="100%"
+          hint="Phone Number" id="phoneNumberField" returnKeyType="next" returnPress="{{ onTapKeyboardNext }}"
+          text="{{phoneNumberInput}}" keyboardType="phone"/>
+        <!-- <Image class="cameraButton" horizontalAlignment="right" src="~/images/buttons/button_right.png"/> -->
+      </StackLayout>
+
+      <!-- Third Row -->
+      <GridLayout class="thirdRow" horizontalAlignment="stretch" verticalAlignment="top" columns="*,*">
+        <TextField class="inputField passwordField" col="0"
+          hint="Password" id="passwordField" returnKeyType="next" returnPress="{{ onTapKeyboardNext }}"
+          secure="true"
+          text="{{passwordInput}}"/>
+        <TextField class="inputField passwordReentryField" col="1"
+          hint="Re-Entry" id="confirmPasswordField"
+          secure="true"
+          text="{{passwordReentryInput}}"/>
+      </GridLayout>
+
+      <!-- Section below input fields -->
+      <StackLayout class="passwordStrengthSection" id="passwordStrengthSection" height="55">
+        <Progress id="passwordStrengthBar" class="strengthProgressBar" value="0"
+          maxValue="4"/>
+        <Label class="strengthLabel" id="strengthLabel" text="Password Strength" textWrap="true" color="darkgray"/>
+      </StackLayout>
+
+      <!-- Success message section -->
+      <StackLayout class="successMessageSection" id="successMessageSection" height="55" visibility="collapsed" opacity="{{ confirmPhoneNumberSectionsOpacity }}">
+        <Label id="successMessage" textWrap="true" style="font-size: 13; text-align: center; margin-top: 3; color: silver"
+          text="An OTP has been sent to this contact. Please enter the 6-digit verification code."/>
+      </StackLayout>
+
+      <!-- Navigation Button -->
+      <Login:SubmitButton id="submitButton" class="submitButton" verticalAlignment="bottom" 
+        tap="{{ onTapSubmitButton }}" borderRadius="12">
+        <Image id="submitButtonArrow" class="submitButtonArrow" src="~/images/buttons/button_right_nobackground.png" verticalAlignment="center"/>
+        <ActivityIndicator id="submitActivityIndicator" color="white" busy="false"/>
+        <Image id="submitButtonTick" class="submitButtonTick" src="~/images/buttons/button_tick_nobackground.png" visibility="collapsed"/>
+      </Login:SubmitButton>
+    </StackLayout>
+
+    <!-- PhoneNumber verification section -->
+    <StackLayout id="verifyPhoneNumberSection" class="verifyPhoneNumberSection" verticalAlignment="bottom"
+      opacity="{{ confirmPhoneNumberSectionsOpacity }}">
+      <FlexboxLayout class="verifyPhoneNumberInputGroup" justifyContent="space-between">
+        <TextField class="verifyPhoneNumberInput" maxLength="1" keyboardType="phone"
+          id="verifyPhoneNumberInput0"/>
+        <TextField class="verifyPhoneNumberInput" maxLength="1" keyboardType="phone"
+          id="verifyPhoneNumberInput1"/>
+        <TextField class="verifyPhoneNumberInput" maxLength="1" keyboardType="phone"
+          id="verifyPhoneNumberInput2"/>
+        <TextField class="verifyPhoneNumberInput" maxLength="1" keyboardType="phone"
+          id="verifyPhoneNumberInput3"/>
+        <TextField class="verifyPhoneNumberInput" maxLength="1" keyboardType="phone"
+          id="verifyPhoneNumberInput4"/>
+        <TextField class="verifyPhoneNumberInput" maxLength="1" keyboardType="phone"
+          id="verifyPhoneNumberInput5"/>
+      </FlexboxLayout>
+      <Label style="font-size: 13; color: silver; margin-top: 5; margin-bottom: 15" text="Enter your 6-digit verification code here." horizontalAlignment="center"/>
+      <Label style="font-size: 13; margin-bottom: 20" horizontalAlignment="center">
+        <FormattedString>
+          <Span text="If you haven't received any message, " color="silver"/>
+          <Span text="Resend OTP" color="#FF415F"/>
+        </FormattedString>
+      </Label>
+    </StackLayout>
+
+    <!-- Hidden Text Field -->
+    <TextField id="hiddenTextField" width="0" height="0"/>
+
+  </GridLayout>
+</Page>

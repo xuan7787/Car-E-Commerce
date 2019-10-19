@@ -1,0 +1,35 @@
+[
+ {
+   "name": "Hatchback"
+ },
+ {
+   "name": "Sedan"
+ },
+ {
+   "name": "Convertible"
+ },
+ {
+   "name": "Passenger"
+ },
+ {
+   "name": "MPV"
+ },
+ {
+   "name": "SUV"
+ },
+ {
+   "name": "Stationwagon"
+ },
+ {
+   "name": "Sport"
+ },
+ {
+   "name": "Others"
+ },
+ {
+   "name": "Diesel"
+ },
+ {
+   "name": "Hybrid"
+ }
+]

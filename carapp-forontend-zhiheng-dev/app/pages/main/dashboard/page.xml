@@ -1,0 +1,173 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:Navbar="components/navbar"
+  xmlns:Slides="nativescript-slides"
+  xmlns:ns="nativescript-carousel"
+  actionBarHidden="true">
+  <AbsoluteLayout width="100%" height="100%">
+    <StackLayout class="mainStackLayout" width="100%">
+      <!-- Featured -->
+      <!--AbsoluteLayout class="featuredSlidesContainer">
+        <Slides:SlideContainer class="featuredSlides" pageIndicators="true">
+          <Slides:Slide>
+            <Image class="featuredImage" src="~/images/testimage1.jpg"/>
+          </Slides:Slide>
+          <Slides:Slide>
+            <Image class="featuredImage" src="~/images/testimage2.jpg"/>
+          </Slides:Slide>
+          <Slides:Slide>
+            <Image class="featuredImage" src="~/images/testimage3.jpg"/>
+          </Slides:Slide>
+        </Slides:SlideContainer>
+      </AbsoluteLayout-->
+      <ns:Carousel indicatorColorUnselected="#fff" indicatorColor="#ff1900" indicatorOffset="0,8"
+          pageChanged="myChangeEvent" pageTapped="mySelectedEvent" finite="false" 
+          bounce="false" showIndicator="true" verticalAlignment="bottom" 
+          android:indicatorAnimation="swap" color="white" class="featuredSlides"
+          width="{{viewWidth}}">
+        <ns:CarouselItem id="slide1" backgroundColor="#b3cde0" verticalAlignment="middle">
+            <Image class="featuredImage" src="~/images/testimage1.jpg"/>
+            <Label text="Slide 1" backgroundColor="#50000000" horizontalAlignment="center"/>
+        </ns:CarouselItem>
+        <ns:CarouselItem id="slide2" backgroundColor="#6497b1" verticalAlignment="middle">
+            <Image class="featuredImage" src="~/images/testimage2.jpg"/>
+            <Label text="Slide 2" backgroundColor="#50000000" horizontalAlignment="center"/>
+        </ns:CarouselItem>
+        <ns:CarouselItem id="slide3" backgroundColor="#005b96" verticalAlignment="middle">
+            <Image class="featuredImage" src="~/images/testimage3.jpg"/>
+            <Label text="Slide 3" backgroundColor="#50000000" horizontalAlignment="center"/>
+        </ns:CarouselItem>
+      </ns:Carousel>
+
+      <!-- Circle Buttons -->
+      <FlexboxLayout class="circleButtons" width="{{viewWidth}}">
+        <StackLayout tap="{{ onTapDashboardToolsButton }}">
+          <AbsoluteLayout class="circleButtonFrame">
+            <Image top="13" left="0" width="55" height="55"
+              src="~/images/icons/icon_wrench.png"/>
+          </AbsoluteLayout>
+          <Label
+            text="Tools"
+            class="buttonLabel"/>
+        </StackLayout>
+        <StackLayout>
+          <AbsoluteLayout class="circleButtonFrame">
+            <Image top="10" left="10" width="50" height="50"
+              src="~/images/icons/icon_grayclock.png"/>
+          </AbsoluteLayout>
+          <Label
+            text="History"
+            class="buttonLabel"/>
+        </StackLayout>
+        <StackLayout>
+          <AbsoluteLayout class="circleButtonFrame">
+            <Image top="15" left="15" width="40" height="40"
+            src="~/images/icons/icon_trending.png"/>
+          </AbsoluteLayout>
+          <Label
+            text="Trending"
+            class="buttonLabel"/>
+        </StackLayout>
+        <StackLayout>
+          <AbsoluteLayout class="circleButtonFrame">
+            <Image top="10" left="10" width="50" height="50"
+            src="~/images/icons/icon_settings_coloured.png"/>
+          </AbsoluteLayout>
+          <Label
+            text="Settings"
+            class="buttonLabel"/>
+        </StackLayout>
+      </FlexboxLayout>
+
+      <!-- Saved Searches -->
+      <StackLayout width="{{viewWidth}}">
+        <StackLayout class="savedSearchesHeading">
+          <Image class="headingIcon" src="~/images/icons/icon_yellowstar.png"/>
+          <Label class="headingLabel" text="Saved Searches"/>
+        </StackLayout>
+        <FlexboxLayout class="savedSearches" horizontalAlign="stretch">
+          <AbsoluteLayout class="savedSearchesItemLayout" width="{{savedSearchesImageWidth}}">
+            <StackLayout>
+              <Image class="imageBox" width="{{savedSearchesImageWidth}}" height="{{savedSearchesImageWidth}}"/>
+              <Label text="Nissan Altama" class="imageBoxLabel"/>
+            </StackLayout>
+            <AbsoluteLayout class="notificationNumberContainer"
+              visibility="{{searchSettingNotificationCounts[0] ? 'visible' : 'hidden'}}"
+              left="{{notificationNumberDisplacement}}">
+              <Image class="notificationNumberBase" src="~/images/graphics/base_notificationnumber.png"/>
+              <Label class="notificationNumberLabel"
+                text="{{searchSettingNotificationCounts[0]}}"/>
+            </AbsoluteLayout>
+          </AbsoluteLayout>
+          <AbsoluteLayout class="savedSearchesItemLayout" width="{{savedSearchesImageWidth}}">
+            <StackLayout>
+              <Image class="imageBox" width="{{savedSearchesImageWidth}}" height="{{savedSearchesImageWidth}}"/>
+              <Label text="Nissan Altama" class="imageBoxLabel"/>
+            </StackLayout>
+            <AbsoluteLayout class="notificationNumberContainer"
+              visibility="{{searchSettingNotificationCounts[1] ? 'visible' : 'hidden'}}"
+              left="{{notificationNumberDisplacement}}">
+              <Image class="notificationNumberBase" src="~/images/graphics/base_notificationnumber.png"/>
+              <Label class="notificationNumberLabel"
+                text="{{searchSettingNotificationCounts[1]}}"/>
+            </AbsoluteLayout>
+          </AbsoluteLayout>
+          <AbsoluteLayout class="savedSearchesItemLayout" width="{{savedSearchesImageWidth}}">
+            <StackLayout>
+              <Image class="imageBox" width="{{savedSearchesImageWidth}}" height="{{savedSearchesImageWidth}}"/>
+              <Label text="Nissan Altama" class="imageBoxLabel"/>
+            </StackLayout>
+            <AbsoluteLayout class="notificationNumberContainer"
+              visibility="{{searchSettingNotificationCounts[2] ? 'visible' : 'hidden'}}"
+              left="{{notificationNumberDisplacement}}">
+              <Image class="notificationNumberBase" src="~/images/graphics/base_notificationnumber.png"/>
+              <Label class="notificationNumberLabel"
+                text="{{searchSettingNotificationCounts[2]}}"/>
+            </AbsoluteLayout>
+          </AbsoluteLayout>
+          <AbsoluteLayout class="savedSearchesItemLayout" width="{{savedSearchesImageWidth}}">
+            <StackLayout>
+              <Image class="imageBox" width="{{savedSearchesImageWidth}}" height="{{savedSearchesImageWidth}}"/>
+              <Label text="Nissan Altama" class="imageBoxLabel"/>
+            </StackLayout>
+            <AbsoluteLayout class="notificationNumberContainer"
+              visibility="{{searchSettingNotificationCounts[3] ? 'visible' : 'hidden'}}"
+              left="{{notificationNumberDisplacement}}">
+              <Image class="notificationNumberBase" src="~/images/graphics/base_notificationnumber.png"/>
+              <Label class="notificationNumberLabel"
+                text="{{searchSettingNotificationCounts[3]}}"/>
+            </AbsoluteLayout>
+          </AbsoluteLayout>
+          <AbsoluteLayout class="savedSearchesItemLayout" width="{{savedSearchesImageWidth}}">
+            <StackLayout>
+              <Image class="imageBox" width="{{savedSearchesImageWidth}}" height="{{savedSearchesImageWidth}}"/>
+              <Label text="Nissan Altama" class="imageBoxLabel"/>
+            </StackLayout>
+            <AbsoluteLayout class="notificationNumberContainer"
+              visibility="{{searchSettingNotificationCounts[4] ? 'visible' : 'hidden'}}"
+              left="{{notificationNumberDisplacement}}">
+              <Image class="notificationNumberBase" src="~/images/graphics/base_notificationnumber.png"/>
+              <Label class="notificationNumberLabel"
+                text="{{searchSettingNotificationCounts[4]}}"/>
+            </AbsoluteLayout>
+          </AbsoluteLayout>
+          <AbsoluteLayout class="savedSearchesItemLayout" width="{{savedSearchesImageWidth}}">
+            <StackLayout>
+              <Image class="imageBox" width="{{savedSearchesImageWidth}}" height="{{savedSearchesImageWidth}}"/>
+              <Label text="Nissan Altama" class="imageBoxLabel"/>
+            </StackLayout>
+            <AbsoluteLayout class="notificationNumberContainer"
+              visibility="{{searchSettingNotificationCounts[5] ? 'visible' : 'hidden'}}"
+              left="{{notificationNumberDisplacement}}">
+              <Image class="notificationNumberBase" src="~/images/graphics/base_notificationnumber.png"/>
+              <Label class="notificationNumberLabel"
+                text="{{searchSettingNotificationCounts[5]}}"/>
+            </AbsoluteLayout>
+          </AbsoluteLayout>
+        </FlexboxLayout>
+      </StackLayout>
+
+    </StackLayout>
+  </AbsoluteLayout>
+</Page>

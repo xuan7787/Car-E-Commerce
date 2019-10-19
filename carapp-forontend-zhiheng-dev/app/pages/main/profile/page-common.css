@@ -1,0 +1,166 @@
+.profileSection{
+  margin-left: 20;
+}
+.followersCount, .followingCount{
+  color: #FF415F;
+  font-size: 26;
+
+}
+.profileInfoLabel{
+  margin-top: -5;
+  font-size: 12;
+  margin-right: 10;
+  color: silver;
+}
+.yourListingsHeading{
+  margin-top: 8;
+  color: #FF415F;
+  font-size: 16;
+}
+.profileCard{
+  height: 100%;
+  width: 100%;
+  color: turquoise;
+  border-width: 1;
+  border-color:darkgray;
+  radius: 10;
+  padding-right: 20;
+}
+.profileDetails{
+  margin-left: 10;
+  margin-top: 4;
+  margin-bottom: 4;
+}
+.profileName{
+  color: #FF415F;
+  font-size: 22;
+  padding-bottom: 0;
+  margin-bottom: -6;
+}
+.profileMiniLabel{
+  color: silver;
+  font-size: 11;
+}
+.profileMiniIcon{
+  height: 11;
+  margin: 0 2;
+}
+.profileRating{
+  margin-bottom: 2;
+  margin-top: 3;
+}
+.ratingStar{
+  height: 11;
+  width: 11;
+  margin: 0 1;
+}
+.ratingNumber{
+  margin-left: 4;
+}
+.profilePictureContainer{
+  width: 72;
+  height: 72;
+  border-radius: 100;
+  margin: 0 6;
+}
+.profilePicture{
+  width: 100%;
+  height: 100%;
+}
+.profileButtonsContainer{
+  height: 100%;
+}
+.profileButton{
+  width: 24;
+}
+
+.searchResultsScrollView{
+  horizontal-alignment: stretch;
+}
+.searchResultsListView{
+  margin-top: 20;
+  horizontal-alignment: center;
+  width: 100%;
+}
+.searchResultItemCard{
+
+  margin-left: 4;
+  margin-right: 4;
+
+  margin-top: 4;
+  margin-bottom: 4;
+
+  background-color: white;
+}
+.searchResultItemCard.secondCard{
+  margin-top: 60;
+}
+.searchResultCarImageContainer{
+  horizontal-alignment: stretch;
+}
+.searchResultCarImage{
+  stretch: aspectFill;
+}
+.searchResultFavouriteButtonImage{
+  horizontal-alignment: right;
+  vertical-alignment: top;
+  margin-right: -10;
+  width: 60;
+  height: 60;
+}
+.searchResultFavouriteButtonTapArea{
+  horizontal-alignment: right;
+  vertical-alignment: top;
+  margin-right: 8;
+  margin-top: 8;
+  width: 30;
+  height: 30;
+  background-color: transparent;
+  border-radius: 1;
+}
+.searchResultCarName{
+  margin-top: 5;
+  font-size: 20;
+  text-align: center;
+  color: black;
+}
+.infoRow{
+  orientation: horizontal;
+
+  margin-left: 8;
+  margin-right: 8;
+}
+.innerIcon{
+  width: 16;
+  height: 16;
+}
+.infoLabel{
+  font-size: 12;
+  color: gray;
+  margin-left: 3;
+  margin-top: 1.5;
+}
+/* First Row */
+.timeRemaining{
+  width: 75;
+}
+/* Price */
+.priceLabel{
+  margin-left: 8;
+  color: #FF415F;
+  font-size: 35;
+}
+/* Share and depreciation */
+.spacingAfterShare{
+  width: 16;
+}
+
+.border-red{
+  border-width: 1;
+  border-color: red;
+}
+
+.border-blue{
+  border-width: 1;
+  border-color: blue;
+}

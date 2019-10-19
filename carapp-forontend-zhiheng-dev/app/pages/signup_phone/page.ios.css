@@ -1,0 +1,16 @@
+@import './page-common.css';
+
+.labelButton{
+
+  font-weight: 500;
+}
+.inputField{
+  font-weight: 500;
+}
+
+.strengthProgressBar{
+  margin-top: 4;
+}
+.signUpWithLabel{
+  font-weight: 500;
+}

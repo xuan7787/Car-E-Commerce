@@ -1,0 +1,5 @@
+@import './page-common.css';
+
+.searchResultItemCard{
+  radius: 20;
+}

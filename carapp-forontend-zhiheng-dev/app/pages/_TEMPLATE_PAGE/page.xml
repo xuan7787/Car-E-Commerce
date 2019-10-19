@@ -1,0 +1,7 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  actionBarHidden="true">
+  <AbsoluteLayout width="100%" height="100%">
+
+  </AbsoluteLayout>
+</Page>

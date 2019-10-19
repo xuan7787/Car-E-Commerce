@@ -1,0 +1,11 @@
+@import './page-common.css';
+
+.inputField{
+  font-weight: 500;
+}
+.headingLabel{
+  font-weight: 500;
+}
+.listCarCardDrawer{
+  background-color: white;
+}

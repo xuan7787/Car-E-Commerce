@@ -1,0 +1,63 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Loading="components/loading"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <StackLayout width="100%" class="mainStackLayout">
+      <Image class="loginImage" horizontalAlignment="center"
+        src="~/images/graphics/image_login.png"/>
+      <!-- First Row -->
+      <TextField class="inputField identityField" horizontalAlignment="stretch"
+        hint="Name/Email/HP"
+        text="{{identityInput}}"/>
+      <!-- Second Row -->
+      <TextField class="inputField passwordField" hint="Password"
+        secure="true"
+        text="{{passwordInput}}"/>
+      <!-- Forgot Password -->
+      <Label class="forgotPassword" horizontalAlignment="center"
+        tap="{{onTapForgotPasswordButton}}" style="font-size: 14">
+        <FormattedString>
+          <Span text="Forget password?" color="silver"/>
+          <Span text=" Reset your password" color="#FB4561"/>
+        </FormattedString>
+      </Label>
+
+      
+      <Image dock="right" class="loginButton" src="~/images/buttons/button_right_long.png"
+          tap="{{onTapLoginButton}}"/>
+    </StackLayout>
+
+    <!-- Registration Section -->
+    <StackLayout class="registrationSection" verticalAlignment="bottom"
+      horizontalAlignment="center">
+      <Label style="font-size: 14; margin-bottom: 5; text-align: center">
+        <FormattedString>
+          <Span text="Alternatively, " color="silver"/>
+          <Span text="register with" color="#FB4561"/>
+        </FormattedString>
+      </Label>
+      <StackLayout class="registrationButtonGroup" orientation="horizontal">
+        <StackLayout class="registrationButtonTapBox" verticalAlignment="center"
+          tap="{{ onTapEmailSignup }}">
+          <Image class="registrationButton" src="~/images/graphics/image_emailsignup.png"/>
+        </StackLayout>
+        <StackLayout class="registrationButtonTapBox" verticalAlignment="center"
+          tap="{{ onTapFacebookSignup }}">
+          <Image class="registrationButton" src="~/images/graphics/image_facebooklogin.png"/>
+        </StackLayout>
+        <StackLayout class="registrationButtonTapBox" verticalAlignment="center"
+          tap="{{ onTapPhoneSignup }}">
+          <Image class="registrationButton" src="~/images/icons/icon_messages_7.png"/>
+        </StackLayout>
+      </StackLayout>
+    </StackLayout>
+
+    <!-- Start Browsing First section -->
+    <StackLayout class="startBrowsingFirstSection" tap="{{ onTapStartBrowsing }}"
+      verticalAlignment="bottom" horizontalAlignment="center">
+      <Label class="labelButton startBrowsingFirst" text="Start Browsing First"/>
+    </StackLayout>
+
+  </GridLayout>
+</Page>

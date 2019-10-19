@@ -1,0 +1,20 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:lv="nativescript-ui-listview"
+  xmlns:CardDrawer="components/card-drawer"
+  actionBarHidden="true">
+  <AbsoluteLayout>
+    <Button text="open drawer" tap="{{onTapOpenDrawerButton}}"/>
+    <Label top="50" text="{{selectedDate}}"/>
+    <CardDrawer:CardDrawer height="300" width="320"
+      radius="20"
+      id="BottomCardDrawer">
+      <AbsoluteLayout width="320" height="300">
+        <CardDrawer:DrawerCalendar width="320" height="200"
+          dateSelected="{{onCalendarDateSelected}}" selectedDate="{{selectedDate}}"
+          id="BottomCardDrawerCalendar"/>
+      </AbsoluteLayout>
+    </CardDrawer:CardDrawer>
+  </AbsoluteLayout>
+</Page>

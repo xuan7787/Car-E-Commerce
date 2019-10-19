@@ -1,0 +1,60 @@
+.topButtonGroup{
+  padding-top: 20;
+  padding-bottom: 10;
+  background: rgba(0,0,0,0.4);
+}
+.closeButton{
+  height: 35;
+  width: 35;
+  margin-left: 15;
+}
+.topButton{
+  height: 35;
+  width: 35;
+  border-radius: 5;
+  border-width: 2;
+  border-color: white;
+  margin-right: 5;
+  margin-left: 5;
+}
+.bottomSection{
+  background: rgba(0,0,0,0.4);
+}
+.tipsSection{
+  padding-right: 60;
+  padding-left: 60;
+  padding-top: 20;
+}
+.tipsHeading{
+  color: white;
+  text-align: center;
+  font-size: 24;
+  margin-bottom: 20;
+}
+.tips{
+  color: darkgray;
+  margin-bottom: 10;
+  font-size: 14;
+}
+.galleryButton{
+  height: 32;
+  width: 32;
+  border-radius: 5;
+  border-width: 2;
+  border-color: white;
+  margin-left: 20;
+}
+.bottomButtonGroup{
+  padding-bottom: 30;
+}
+.captureButton{
+  height: 32;
+  width: 90;
+  border-radius: 5;
+  background: white;
+}
+.filler{
+  height: 32;
+  width: 32;
+  margin-right: 20;
+}

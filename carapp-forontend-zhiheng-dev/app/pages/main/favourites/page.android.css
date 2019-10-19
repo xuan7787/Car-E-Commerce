@@ -1,0 +1,6 @@
+@import './page-common.css';
+
+.searchResultItemCard{
+  radius: 20;
+  elevation: 5;
+}

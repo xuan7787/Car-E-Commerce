@@ -1,0 +1,12 @@
+@import './page-common.css';
+
+.labelButton{
+  padding-top: 1;
+  font-weight: 900;
+}
+.inputField{
+  font-weight: 900;
+}
+.loginWithLabel{
+  font-weight: bold;
+}

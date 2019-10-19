@@ -1,0 +1,115 @@
+.labelButton{
+  background-color: #3386FF;
+  color: white;
+  text-align: center;
+  border-radius: 10;
+  height: 18;
+  font-size: 12.5;
+}
+.inputField{
+  background-color: #EEE;
+  height: 33;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 5;
+  padding-right: 5;
+  border-radius: 10;
+  placeholder-color: darkgray;
+}
+.mainStackLayout{
+  padding-left: 50;
+  padding-right: 50;
+  height: 500;
+}
+
+/* Head */
+.signUpImage{
+  width: 140;
+  margin-bottom: 20;
+}
+.signUpLabel{
+  text-align: center;
+  color: #FF415F;
+  font-size: 25;
+  font-weight: 600;
+  margin-top: 35;
+}
+/* First Row */
+.usernameField{
+  margin-top: 8;
+}
+/* Second Row */
+.secondRow{
+  margin-top: 8;
+}
+.cameraButton{
+  width: 30;
+  height: 30;
+}
+.emailField{
+
+}
+/* Third Row */
+.thirdRow{
+  margin-top: 8;
+}
+.passwordField{
+  margin-right: 5;
+}
+.passwordReentryField{
+  margin-left: 5;
+}
+/* Password Strength */
+.passwordStrengthSection{
+  margin-top: 2;
+}
+.strengthProgressBar{
+  margin-left: 2;
+  margin-right: 2;
+  color: #FF415F;
+}
+.strengthLabel{
+  margin-left: 3;
+  margin-top: 2;
+  font-size: 13;
+}
+.submitButton{
+  width: 100%;
+  height: 40;
+  background: linear-gradient(to right, #FF415F, #F87192);
+}
+.submitButtonArrow{
+  width: 50;
+}
+.submitButtonTick{
+  width: 30;
+}
+/* Success message section*/
+.successMessageSection{
+  margin-top: 2;
+}
+/* Verify Email section */
+.verifyEmailInputGroup{
+  padding-right: 50;
+  padding-left: 50;
+}
+.verifyEmailInput{
+  height: 45;
+  width: 40;
+  font-size: 22;
+  font-weight: 500;
+  background: #EEE;
+  text-align: center;
+  border-radius: 7;
+}
+/* Navigation Buttons */
+.navigationButtonContainer{
+  margin-top: 15;
+}
+.navigationButton{
+  height: 35;
+}
+.border-red{
+  border-width: 1;
+  border-color: red;
+}

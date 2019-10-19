@@ -1,0 +1,47 @@
+/* Label.heading{
+  font-family: 'Avenir Next';
+  font-size: 40;
+  color: #FF415F;
+  margin-top: -6;
+  margin-bottom: -6;
+} */
+
+.mainStackLayout{
+  height: 540;
+  margin-top: -30;
+  padding-right: 40;
+  padding-left: 40
+}
+.welcomeToLabel{
+  font-size: 40;
+  font-weight: 700;
+  color: darkgray;
+}
+.square{
+  font-family: 'avenirnext-heavy', 'Avenir Next';
+  font-weight: 900;
+  font-size: 40;
+}
+.appImage{
+  width: 100%;
+  margin-top: 20;
+  margin-bottom: 20;
+}
+.heading.the{
+  text-align: center;
+}
+.appDescriptionLabel{
+  font-size: 22;
+  color: darkgray;
+}
+.tapDetector{
+  border-radius: 1;
+  opacity: 0;
+}
+.acronym{
+  font-size: 13;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20;
+}

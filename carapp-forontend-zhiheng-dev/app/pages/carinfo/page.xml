@@ -1,0 +1,652 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:CardDrawer="components/card-drawer"
+  xmlns:FloatingButtons="components/floating-buttons"
+  xmlns:lv="nativescript-ui-listview"
+  xmlns:Calendar="nativescript-ui-calendar"
+  xmlns:Chart="nativescript-ui-chart"
+  xmlns:ns="nativescript-carousel"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <ScrollView width="100%" height="100%">
+      <StackLayout>
+        <!-- Car Information -->
+        <AbsoluteLayout class="carImagesContainer" width="{{ viewWidth }}" height="{{ viewWidth }}">
+          <ns:Carousel indicatorColorUnselected="#fff" indicatorColor="#fc2d49" indicatorOffset="0,4" finite="false" 
+            bounce="false" showIndicator="true" verticalAlignment="bottom" 
+            android:indicatorAnimation="swap" color="white" class="carImageSlides"
+            width="{{viewWidth}}" height="{{ viewWidth }}">
+            <ns:CarouselItem id="slide1" backgroundColor="#b3cde0" verticalAlignment="middle" tap="{{ onTapCarImage }}" xindex="0">
+                <Image class="featuredImage" src="~/images/graphics/image_placeholder_caratmbs.jpg" stretch="aspectFill"/>
+                <Label text="Slide 1" backgroundColor="#50000000" horizontalAlignment="center"/>
+            </ns:CarouselItem>
+            <ns:CarouselItem id="slide2" backgroundColor="#6497b1" verticalAlignment="middle" tap="{{ onTapCarImage }}" xindex="1">
+                <Image class="featuredImage" src="~/images/graphics/image_placeholder_carwithgate.png" stretch="aspectFill"/>
+                <Label text="Slide 2" backgroundColor="#50000000" horizontalAlignment="center"/>
+            </ns:CarouselItem>
+            <ns:CarouselItem id="slide3" backgroundColor="#005b96" verticalAlignment="middle" tap="{{ onTapCarImage }}" xindex="2">
+                <Image class="featuredImage" src="~/images/graphics/image_placeholder_bmwfront.jpg" stretch="aspectFill"/>
+                <Label text="Slide 3" backgroundColor="#50000000" horizontalAlignment="center"/>
+            </ns:CarouselItem>
+          </ns:Carousel>
+          <Image class="closeButton" src="~/images/icons/icon_close_gray.png" tap="{{ onTapCloseButton }}"/>
+        </AbsoluteLayout>
+        <GridLayout class="carInformation" width="{{ viewWidth }}">
+          <!-- Top Section -->
+          <StackLayout row="0" col="0">
+            <Label class="carName" text="{{carPosting.name}}"/>
+            <StackLayout class="lister" tap="{{ onTapSellerInfo }}">
+              <Image class="infoIcon" src="~/images/icons/icon_profile.png"/>
+              <Label class="listerUsername" text="{{carPosting.post_by}}"/>
+            </StackLayout>
+          </StackLayout>
+          <StackLayout row="0" col="1">
+            <DockLayout stretchLastChild="false">
+              <Label class="carPrice" dock="right" text="{{'$'+numberWithCommas(carPosting.price)}}"/>
+            </DockLayout>
+            <DockLayout stretchLastChild="false">
+              <StackLayout class="depreciation" dock="right">
+                <Image class="infoIcon" src="~/images/icons/icon_depreciation.png"/>
+                <Label class="depreciationRate" text="{{ '$' + numberWithCommas(carDepreciationValue) }}"/>
+              </StackLayout>
+            </DockLayout>
+          </StackLayout>
+          <!-- Registration Date -->
+          <StackLayout row="1" col="0">
+            <Label class="infoHeading" text="Registration Date"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_calendar.png"/>
+              <Label class="registrationDate" text="{{ registrationDateString }}"/>
+            </StackLayout>
+            <Label class="timeLeft" text="3 years 11 months 6 days left"/>
+          </StackLayout>
+          <!-- Owners -->
+          <StackLayout row="1" col="1">
+            <Label class="infoHeading" text="Owners"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_key.png"/>
+              <Label class="infoText" text="{{ carPosting.owners + (carPosting.owners == 1 ? ' Owner' : ' Owners') }}"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- Mileage -->
+          <StackLayout row="2" col="0">
+            <Label class="infoHeading" text="Mileage"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_mileage.png"/>
+              <Label class="infoText" text="{{ numberWithCommas(carPosting.mileage)+' km'}}"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- Manufactured -->
+          <StackLayout row="2" col="1">
+            <Label class="infoHeading" text="Manufactured"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_manufactured.png"/>
+              <Label class="infoText" text="2017"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- OMV -->
+          <StackLayout row="3" col="0">
+            <Label class="infoHeading" text="OMV"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_omv.png"/>
+              <Label class="infoText" text="{{ '$ ' + numberWithCommas(carPosting.omv) }}"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- ARF -->
+          <StackLayout row="3" col="1">
+            <Label class="infoHeading" text="ARF"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_arf.png"/>
+              <Label class="infoText" text="{{ '$ '+numberWithCommas(carPosting.arf) }}"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- Deregistration Value -->
+          <StackLayout row="4" col="0">
+            <Label class="infoHeading" text="Deregistration Value"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_deregistrationvalue.png"/>
+              <Label class="infoText" text="$ 44,560"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- BHP -->
+          <StackLayout row="4" col="1">
+            <Label class="infoHeading" text="BHP"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_bhp.png"/>
+              <Label class="infoText" text="87"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- Engine Capacity -->
+          <StackLayout row="5" col="0">
+            <Label class="infoHeading" text="Engine Capacity"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_enginecapacity.png"/>
+              <Label class="infoText" text="{{ numberWithCommas(carPosting.engine_capacity) + ' cc'}}"/>
+            </StackLayout>
+          </StackLayout>
+          <!-- Road Tax -->
+          <StackLayout row="5" col="1">
+            <Label class="infoHeading" text="Road Tax"/>
+            <StackLayout class="infoRow">
+              <Image class="infoIcon" src="~/images/icons/icon_roadtax.png"/>
+              <Label class="infoText" text="$ 874 yearly"/>
+            </StackLayout>
+          </StackLayout>
+        </GridLayout>
+
+        <!-- Description -->
+        <StackLayout class="description" width="{{ viewWidth }}">
+          <Image class="descriptionIcon" src="~/images/icons/icon_description.png"/>
+          <Label class="infoHeading" text="Description"/>
+        </StackLayout>
+        <Label class="descriptionText" textWrap="true" width="{{viewWidth}}" text="{{carPosting.description}}"/>
+
+        <!-- Accessories/Modifications -->
+        <StackLayout class="accessoriesSection" width="320">
+          <Label class="infoHeading" text="Accessories/Modifications"/>
+          <StackLayout class="accessoriesInteractiveSection">
+            <AbsoluteLayout height="100%" width="100%">
+              <Image left="0" top="0" width="320" src="~/images/graphics/image_carmodification_base.png"
+                id="carModificationBase"/>
+              <Image left="28" top="69" width="263" src="~/images/graphics/image_carmodification_wheels.png"
+                tap="{{onTapCarModificationComponent}}" xcomponent="Wheels" id="carModificationWheels"/>
+              <Image left="0" top="22" width="320" src="~/images/graphics/image_carmodification_body.png"
+                tap="{{onTapCarModificationComponent}}" xcomponent="Body" id="carModificationBody"/>
+              <Image left="62" top="3" width="163" src="~/images/graphics/image_carmodification_doors.png"
+                tap="{{onTapCarModificationComponent}}" xcomponent="Doors" id="carModificationDoors"/>
+              <Image left="14" top="0" width="224" src="~/images/graphics/image_carmodification_windows.png"
+                tap="{{onTapCarModificationComponent}}" xcomponent="Windows" id="carModificationWindows"/>
+              <Image left="-11" top="16" width="64" src="~/images/graphics/image_carmodification_backlights.png"
+                tap="{{onTapCarModificationComponent}}" xcomponent="Backlights" id="carModificationBacklights"/>
+            </AbsoluteLayout>
+          </StackLayout>
+          <StackLayout class="accessoriesImagesContainer" orientation="horizontal">
+            <Image class="accessoriesImage" src="~/images/graphics/image_placeholder_tyres.png"/>
+            <Image class="accessoriesImage" src="~/images/graphics/image_placeholder_cardoors.png"/>
+            <Image class="accessoriesImage" src="~/images/graphics/image_placeholder_steeringwheel.png"/>
+            <Image class="accessoriesImage last" src="~/images/graphics/image_placeholder_carwithgate.png"/>
+          </StackLayout>
+        </StackLayout>
+
+        <!-- Market Comparison -->
+        <StackLayout class="marketComparisonSection" width="{{ viewWidth }}">
+          <StackLayout class="marketComparisonHeading" orientation="horizontal">
+            <Image src="~/images/icons/icon_marketcomparison.png" class="infoIcon"/>
+            <Label text="Market Comparison" class="infoHeading" style="margin-left: 10"/>
+          </StackLayout>
+          <StackLayout id="marketComparisonChart">
+            <StackLayout class="marketComparisonChartWrapper" style="padding-right: 15">
+              <Chart:RadCartesianChart height="135" width="100%" background="#F1F2F3">
+                <Chart:RadCartesianChart.horizontalAxis>
+                    <Chart:LinearAxis hidden="true"/>
+                </Chart:RadCartesianChart.horizontalAxis>
+                <Chart:RadCartesianChart.verticalAxis>
+                    <Chart:LinearAxis labelLayoutMode="inner" labelFitMode="None" labelTextColor="#555" firstLabelVisibility="Hidden"/>
+                </Chart:RadCartesianChart.verticalAxis>
+                <Chart:RadCartesianChart.series>
+                    <Chart:ScatterSeries  items="{{ marketComparisonData }}" xProperty="timestamp" yProperty="price"/>             
+                    <Chart:ScatterSeries  items="{{ currentCarPriceData }}" xProperty="timestamp" yProperty="price"/>         
+                </Chart:RadCartesianChart.series>
+              </Chart:RadCartesianChart>
+              <FlexboxLayout class="marketComparisonXaxis" justifyContent="space-between">
+                <Label text="Reg Date"/>
+                <Label text="Apr"/>
+                <Label text="Jun"/>
+                <Label text="Aug"/>
+              </FlexboxLayout>
+
+              <!-- <Image src="~/images/graphics/image_placeholder_marketcomparison.png" style="{{ 'margin-top: 8; max-width: '+viewWidth}}"
+              stretch="aspectFill"/> -->
+            </StackLayout>
+            <Label text="this car you are looking for is averagely priced" class="infoHeading" style="text-align: center"/>
+          </StackLayout>
+        </StackLayout>
+
+        <!-- Depreciation Forecast -->
+        <StackLayout class="depreciationForecastSection" width="{{ viewWidth }}">
+          <StackLayout class="depreciationForecastHeading" orientation="horizontal">
+            <Image src="~/images/icons/icon_depreciation.png" class="infoIcon"/>
+            <Label text="Depreciation Forecast" class="infoHeading" style="margin-left: 5; margin-bottom: 5;"/>
+          </StackLayout>
+          <StackLayout class="depreciationForecastGraphWrapper">
+            <Chart:RadCartesianChart id="depreciationChart" height="150" width="100%" background="#F1F2F3">
+              <Chart:RadCartesianChart.horizontalAxis>
+                  <Chart:CategoricalAxis labelTextColor="#777" hidden="true"/>
+              </Chart:RadCartesianChart.horizontalAxis>
+              <Chart:RadCartesianChart.verticalAxis>
+                  <Chart:LinearAxis labelLayoutMode="inner" ticksHidden="true" labelTextColor="white"
+                    lineHidden="true" majorStep="10000" labelSize="10" hidden="false" firstLabelVisibility="Hidden"/>
+              </Chart:RadCartesianChart.verticalAxis>
+
+              <Chart:RadCartesianChart.series>
+                  <Chart:SplineAreaSeries items="{{ depreciationData }}" categoryProperty="year" valueProperty="value"
+                    selectionMode="DataPoint" seriesName="Area">
+                  </Chart:SplineAreaSeries>
+              </Chart:RadCartesianChart.series>
+
+              <Chart:RadCartesianChart.palettes>
+                <Chart:Palette seriesName="Area">
+                    <Chart:Palette.entries>
+                        <Chart:PaletteEntry fillColor="#EDC62F" strokeColor="white"/>
+                    </Chart:Palette.entries>
+                </Chart:Palette>
+              </Chart:RadCartesianChart.palettes>
+
+            </Chart:RadCartesianChart>
+            <FlexboxLayout class="depreciationForecastXaxis" justifyContent="space-between">
+              <Label text="2019"/>
+              <Label text="2020"/>
+              <Label text="2021"/>
+              <Label text="2022"/>
+              <Label text="2023"/>
+              <Label text="2024"/>
+            </FlexboxLayout>
+          </StackLayout>
+          <!-- <Image src="~/images/graphics/image_placeholder_depreciationforecast.png"/> -->
+        </StackLayout>
+
+        <!-- Contact Information -->
+        <StackLayout class="contactDetailsSection" width="{{ viewWidth }}">
+          <StackLayout class="contactDetailsHeading" orientation="horizontal">
+            <Image src="~/images/icons/icon_phone.png" width="15"/>
+            <Label text="Contact Details" class="infoHeading" style="margin-left: 5; margin-bottom: 5;"/>
+          </StackLayout>
+          <GridLayout class="contactDetailsGroup" columns="6*,4*" orientation="horizontal">
+            <StackLayout class="contactDetails" orientation="horizontal" style="margin-right: 5;" col="0">
+              <Image class="infoIcon" src="~/images/graphics/image_emailsignup.png" style="margin-right: 4;"/>
+              <Label editable="false" text="{{ carPosting.email }}" longPress="{{ onLongPressContactDetails }}"/>
+            </StackLayout>
+            <StackLayout class="contactDetails" orientation="horizontal" style="margin-left: 5;" col="1">
+              <Image class="infoIcon" src="~/images/icons/icon_messages_7.png" style="margin-right: 4;"/>
+              <Label editable="false" text="{{ carPosting.mobile_number }}" textWrap="false" longPress="{{ onLongPressContactDetails }}"/>
+            </StackLayout>
+          </GridLayout>
+        </StackLayout>
+
+        <!-- Seller profile -->
+        <StackLayout class="sellerProfileSection" orientation="horizontal" tap="{{onTapSellerInfo}}">
+          <StackLayout class="sellerIdentity">
+            <Label text="{{ sellerInfo['first-name'] + ' ' + sellerInfo['last-name'] }}" class="sellerName"/>
+            <Label text="{{ '@'+sellerInfo['username'] }}" class="sellerUsername"/>
+            <StackLayout class="sellerRating" orientation="horizontal">
+              <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+              <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+              <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+              <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+              <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+              <Label class="profileMiniLabel" text="4.7" style="margin-left: 4"/>
+            </StackLayout>
+          </StackLayout>
+          <Card:CardView class="profileCard" shadowRadius="5" shadowOpacity="0.3">
+            <StackLayout orientation="horizontal">
+              <StackLayout class="profileDetails">
+                <Label class="sellerLabel" text="Seller"/>
+                <Label class="sellerJoinDate" text="since 28 Oct '18"/>
+                <StackLayout class="profileOtherDetails" orientation="horizontal">
+                  <Label class="profileMiniLabel" text="Verified" style="margin-right: 5"/>
+                  <Image class="profileMiniIcon" src="~/images/icons/icon_profile_mobile.png"/>
+                  <Image class="profileMiniIcon" src="~/images/icons/icon_profile_mail.png"/>
+                  <Image class="profileMiniIcon" src="~/images/icons/icon_profile_verified.png"/>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout class="profilePictureContainer">
+                <Image class="profilePicture" src="~/images/icons/icon_profile.png"/>
+              </StackLayout>
+            </StackLayout>
+          </Card:CardView>
+        </StackLayout>
+
+        <!-- Listing timestamp -->
+        <StackLayout class="timestamp">
+          <Label text="{{timestampString}}"/>
+        </StackLayout>
+
+        <!-- Loan Calculator -->
+        <StackLayout class="loanCalculatorSection" width="{{ viewWidth }}" style="margin-top: 20">
+          <StackLayout class="loanCalculatorHeading" orientation="horizontal" style="margin-bottom: 15">
+            <Image src="~/images/icons/icon_loan.png" class="infoIcon"/>
+            <Label text="Loan Calculator" class="infoHeading" style="margin-left: 5"/>
+          </StackLayout>
+          <StackLayout class="loanCalculator">
+
+            <!-- First slider -->
+            <StackLayout width="100%">
+              <FlexboxLayout class="darkBackground" justifyContent="space-between" style="margin-bottom: 8">
+                <Label class="value" text="{{ 'S$' + downpayment  }}" tap="{{ onTapDownpaymentValue }}"/>
+                <Label class="description" text="Downpayment"/>
+              </FlexboxLayout>
+              <Slider id="downpaymentSlider" width="100%" value="{{downpayment}}" minValue="0" maxValue="{{ sellingPrice }}"/>
+              <FlexboxLayout class="darkBackground" justifyContent="space-between" style="margin-top: 8">
+                <Label class="value" text="{{ 'S$' + (sellingPrice - downpayment)  }}" tap="{{ onTapLoanAmountValue }}"/>
+                <Label class="description" text="Loan Amount"/>
+              </FlexboxLayout>
+            </StackLayout>
+
+            <!-- Second slider -->
+            <StackLayout width="100%" style="margin-top: 5">
+              <FlexboxLayout class="lightBackground" justifyContent="space-between" style="margin-bottom: 8">
+                <Label class="value" text="{{ interestRate+'%' }}"/>
+                <Label class="description" text="Interest Rate % p.a"/>
+              </FlexboxLayout>
+              <Slider id="interestRateSlider" width="100%" value="{{ interestRateRaw }}" minValue="1.98" maxValue="2.98"/>
+            </StackLayout>
+
+            <!-- Third slider -->
+            <StackLayout width="100%" style="margin-top: 5">
+              <FlexboxLayout class="lightBackground" justifyContent="space-between" style="margin-bottom: 8">
+                <Label class="value" text="{{ loanTenture + ' months' }}" tap="{{ onTapLoanTentureValue }}"/>
+                <Label class="description" text="Loan Tenture (months)"/>
+              </FlexboxLayout>
+              <Slider id="loanTentureSlider" width="100%" value="{{ loanTenture }}" minValue="12" maxValue="{{ maxLoanTenture }}"/>
+              <FlexboxLayout justifyContent="space-between">
+                <Label class="tentureLabel" text="12"/>
+                <Label class="tentureLabel" text="{{ maxLoanTenture }}"/>
+              </FlexboxLayout>
+            </StackLayout>
+
+            <!-- Bottom section -->
+            <StackLayout width="100%">
+              <Label class="formulaLabel" text="{{'+ Instalment S$'+loanInstallment+'/month'}}"/>
+              <Label class="formulaLabel" text="+ Transfer Fee $25"/>
+              
+              <GridLayout width="100%">
+                <GridLayout rows="auto,auto" class="loanResultSection" horizontalAlignment="center">
+                  <Label horizontalAlignment="center" style="font-size: 15; color: dimgray" text="Total Upfront"/>
+                  <Label row="1" horizontalAlignment="center" class="sellingPriceInput" text="{{'S$'+loanUpfront}}"/>
+                </GridLayout>
+              </GridLayout>
+            </StackLayout>
+
+          </StackLayout>
+        </StackLayout>
+
+        <StackLayout class="scrollViewExtender"/>
+
+      </StackLayout>
+    </ScrollView>
+
+    <!-- Bottom Floating Buttons -->
+    <FloatingButtons:BottomFloatingButtonsContainer class="floatingButtonsContainer"
+      verticalAlignment="bottom" id="bottomFloatingButtons">
+      <GridLayout width="100%" orientation="horizontal">
+        <StackLayout orientation="horizontal" horizontalAlignment="center" tap="{{testButton}}">
+          <StackLayout style="margin-right:2">
+            <Image height="100" width="100"
+            src="~/images/buttons/button_floating_home.png" tap="{{onTapHomeButton}}"/>
+          </StackLayout>
+          <StackLayout style="margin-right:2">
+            <Image height="100" width="100"
+            src="~/images/buttons/button_floating_share.png"/>
+            <Button height="50" width="50" borderRadius="1" backgroundColor="transparent"
+              tap=""/>
+          </StackLayout>
+          <StackLayout>
+            <Image height="100" width="100" tap="{{ onTapChatButton }}"
+            src="~/images/buttons/button_floating_chat.png" />
+          </StackLayout>
+        </StackLayout>
+      </GridLayout>
+    </FloatingButtons:BottomFloatingButtonsContainer>
+
+    <!--========== Bottom Card Drawer ==========-->
+    <CardDrawer:CarInfoCardDrawer verticalAlignment="bottom" height="460" width="360" radius="20"
+      id="BottomCardDrawer" class="BottomCardDrawer" drawerState="0">
+      <FlexboxLayout flexDirection="column-reverse" justifyContent="flex-end">
+
+        <!-- Messages section -->
+        <StackLayout class="drawerMessagesSection" visibility="{{ selectedDrawerTab == 0 ? 'visible' : 'collapsed' }}">
+          <StackLayout style="text-align:center; margin-bottom: 5">
+            <Label text="Kwan" class="messagesRecipientName"/>
+            <Label text="last online 5 mins ago" class="lastOnlineLabel"/>
+          </StackLayout>
+          <lv:RadListView class="messagesListView"
+          items="{{messagesData}}" id="messagesListView"
+          width="100%" height="370" touch="{{onTouchDrawerContent}}">
+
+            <lv:RadListView.listViewLayout>
+              <lv:ListViewStaggeredLayout scrollDirection="Vertical" spanCount="1"/>
+            </lv:RadListView.listViewLayout>
+
+            <lv:RadListView.itemTemplate>
+              <StackLayout width="100%">
+                <GridLayout width="{{$parents['Page'].viewWidth}}" rows="*,*" columns="30,*,30" style="padding-top: 2">
+                  <!-- Other party's user image -->
+                  <StackLayout row="0" col="0" rowSpan="2" style="padding-left: 5">
+                  <Card:CardView class="userImageContainer" visibility="{{ !sent ? 'visible' : 'collapsed' }}" 
+                    shadowOpacity="0.35" shadowRadius="2" height="30" width="30">
+                    <StackLayout>
+                      <Image src="{{$parents['Page'].senderImage}}" class="userImage"/>
+                    </StackLayout>
+                  </Card:CardView>
+                  </StackLayout>
+
+                  <!-- Message contents -->
+                  <StackLayout class="messageContentWrapper" row="0" col="1">
+                    <Card:CardView class="{{ sent ? 'messageContentCard sentMessage' : 'messageContentCard' }}"
+                      shadowOpacity="0.5" shadowRadius="3" width="100%">
+                      <Label class="messageContent" text="{{ content }}" textWrap="true"/>
+                    </Card:CardView>
+                  </StackLayout>
+
+                  <!-- Self's user image -->
+                  <StackLayout row="0" col="2" rowSpan="2" style="padding-right: 5">
+                    <Card:CardView  rowSpan="2" class="userImageContainer" visibility="{{ sent ? 'visible' : 'collapsed' }}" 
+                      shadowOpacity="0.35" shadowRadius="2" height="30" width="30">
+                      <StackLayout>
+                        <Image src="{{$parents['Page'].senderImage}}" class="userImage"/>
+                      </StackLayout>
+                    </Card:CardView>
+                  </StackLayout>
+
+                  <!-- Timestamp -->
+                  <StackLayout row="1" col="1" width="100%" height="20" class="chatTimestampContainer">
+                    <Label class="chatTimestamp" text="{{datetime}}" horizontalAlignment="{{ sent ? 'left' : 'right' }}"/>
+                  </StackLayout>
+                </GridLayout>
+              </StackLayout>
+            </lv:RadListView.itemTemplate>
+        
+          </lv:RadListView>
+        </StackLayout>
+
+        <!-- Calendar section -->
+        <StackLayout class="drawerCalendarSection" visibility="{{ selectedDrawerTab == 1 ? 'visible' : 'collapsed' }}"
+          touch="{{onTouchDrawerContent}}">
+          <ScrollView width="100%" height="370">
+            <StackLayout>
+              <Calendar:RadCalendar row="0" colSpan="2" id="drawerCalendar"
+                eventSource="{{ calendarEventsDisplayData }}"
+                eventsViewMode="None"
+                viewMode="Month"
+                dateSelected="{{ onCalendarDateSelected }}"
+                dateDeselected="onDateDeselected"
+                navigatedToDate="{{ onCalendarChangeMonth }}"
+                navigatingToDateStarted="onNavigatingToDateStarted"
+                viewModeChanged="{{ onViewModeChanged }}">
+                <Calendar:RadCalendar.monthViewStyle>
+                  <Calendar:CalendarMonthViewStyle selectionShape="Round" selectionShapeColor="#FF6E6E" selectionShapeSize="7.5" showTitle="true" showDayNames="true" backgroundColor="#FFFFFF">
+
+                    <Calendar:CalendarMonthViewStyle.dayCellStyle>
+                      <Calendar:DayCellStyle cellTextSize="12"/>
+                    </Calendar:CalendarMonthViewStyle.dayCellStyle>
+
+                    <Calendar:CalendarMonthViewStyle.selectedDayCellStyle>
+                      <Calendar:DayCellStyle cellTextColor="White" cellTextSize="12"/>
+                    </Calendar:CalendarMonthViewStyle.selectedDayCellStyle>
+
+                    <Calendar:CalendarMonthViewStyle.dayNameCellStyle>
+                      <Calendar:CellStyle cellTextColor="#000000" cellTextSize="10"/>
+                    </Calendar:CalendarMonthViewStyle.dayNameCellStyle>
+
+                    <Calendar:CalendarMonthViewStyle.titleCellStyle>
+                      <Calendar:CellStyle cellTextColor="#000000" cellTextSize="18"/>
+                    </Calendar:CalendarMonthViewStyle.titleCellStyle>
+
+                  </Calendar:CalendarMonthViewStyle>
+                </Calendar:RadCalendar.monthViewStyle>
+              </Calendar:RadCalendar>
+
+              
+                <StackLayout style="padding-left: 15; padding-right: 15;">
+                  
+                  <!-- Calendar add new event -->
+                  <GridLayout columns="*,5*" horizontalAlignment="center" class="drawerNewEventContainer" width="100%">
+                    <Label col="0" text="{{ selectedCalendarDateNumberDisplay }}" class="event_date" verticalAlignment="top"/>
+                    <GridLayout col="1" columns="*,*" class="calendarNewEventGroup">
+                      <StackLayout style="margin-right: 4">
+                        <!-- Venue input group -->
+                        <StackLayout class="calendarVenueFormGroup">
+                          <Label text="Venue" class="calendarFormLabel"/>
+                          <StackLayout class="calendarVenueInputWrapper">
+                            <TextField class="calendarTextField" text="{{ calendarVenueInput }}"/>
+                          </StackLayout>
+                        </StackLayout>
+
+                        <!-- Notes input group -->
+                        <StackLayout class="calendarNotesFormGroup">
+                          <Label text="Miscellaneous/Notes" class="calendarFormLabel" style="margin-top: 5"/>
+                          <TextView class="calendarTextView" height="45" text="{{ calendarNotesInput }}"/>
+                        </StackLayout>
+                      </StackLayout>
+
+                      <StackLayout col="1" style="margin-left: 4">
+                        <!-- Time input group -->
+                        <StackLayout class="calendarTimeFormGroup">
+                          <StackLayout col="1" style="margin-left: 2">
+                            <Label text="Time" class="calendarFormLabel"/>
+                            <Label class="calendarTextField" tap="{{ onTapCalendarTimeInput }}" text="{{ calendarTimeLabel }}"/>
+                          </StackLayout>
+
+                          <!-- Agenda input group -->
+                          <StackLayout class="calendarAgendaFormGroup" style="margin-top: 5">
+                            <Label text="Agenda" class="calendarFormLabel"/>
+                            <TextView class="calendarTextView" height="55" background="#FA3859" style="color: white" text="{{ calendarAgendaInput }}"/>
+                          </StackLayout>
+
+                          <!-- Confirm button -->
+                          <GridLayout> 
+                            <GridLayout class="calendarConfirmButtonCircle" horizontalAlignment="right" tap="{{ onTapCalendarConfirmButton }}">
+                              <Image src="~/images/buttons/button_tick_nobackground.png" class="calendarConfirmButton" horizontalAlignment="center"/>
+                            </GridLayout>
+                          </GridLayout>
+                        </StackLayout>
+                      </StackLayout>
+                    </GridLayout>
+                  </GridLayout>
+
+                  <!-- Calendar events -->
+                  <StackLayout columns="*,5*" rows="auto, auto, auto, auto" horizontalAlignment="center"
+                    class="drawerCalendarEventsContainer">
+
+                    <lv:RadListView class="calendarListView"
+                      items="{{calendarEventsData}}" id="calendarListView"
+                      width="100%" height="{{ calendarEventsHeight }}" touch="{{onTouchDrawerContent}}">
+
+                        <lv:RadListView.listViewLayout>
+                          <lv:ListViewStaggeredLayout scrollDirection="Vertical" spanCount="1"/>
+                        </lv:RadListView.listViewLayout>
+
+                        <lv:RadListView.itemTemplate>
+                          <GridLayout columns="*,5*" class="calendarEvent">
+                            <Label col="0" textWrap="true" text="{{ dateNumber }}" class="event_date" verticalAlignment="top"/>
+                            <GridLayout col="1" columns="auto,auto" rows="auto, auto" width="100%"
+                              class="event_info" id="event_info_1">
+                              <Label row="0" col="0" textWrap="true" text="{{ title }}" class="event_title"/>
+                              <Label row="0" col="1" textWrap="true" text="{{ location }}" class="event_location"/>
+
+                              <Label row="1" col="0" textWrap="true" text="{{ timeString }}" class="event_timing"/>
+                              <Label row="1" col="1" textWrap="true" text="{{ notes }}" class="event_description"/>
+                            </GridLayout>
+                          </GridLayout>
+                        </lv:RadListView.itemTemplate>
+                    
+                      </lv:RadListView>
+
+                    <!-- <GridLayout columns="*,5*" class="calendarEvent">
+                      <Label col="0" textWrap="true" text="4" class="event_date" verticalAlignment="top"/>
+                      <GridLayout col="1" columns="auto,auto" rows="auto, auto" width="100%"
+                        class="event_info" id="event_info_1">
+                        <Label row="0" col="0" textWrap="true" text="Car Viewing" class="event_title"/>
+                        <Label row="0" col="1" textWrap="true" text="Location" class="event_location"/>
+
+                        <Label row="1" col="0" textWrap="true" text="2pm - 3pm" class="event_timing"/>
+                        <Label row="1" col="1" textWrap="true" text="with Kwan" class="event_description"/>
+                      </GridLayout>
+                    </GridLayout>
+
+                    <GridLayout columns="*,5*" class="calendarEvent">
+                      <Label col="0" textWrap="true" text="8" class="event_date" verticalAlignment="top"/>
+                      <GridLayout col="1" columns="auto,auto" rows="auto, auto" width="100%"
+                        class="event_info" id="event_info_2">
+                        <Label row="0" col="0" textWrap="true" text="Lecture" class="event_title"/>
+                        <Label row="0" col="1" textWrap="true" text="NUS" class="event_location"/>
+
+                        <Label row="1" col="0" textWrap="true" text="12pm - 4pm" class="event_timing"/>
+                        <Label row="1" col="1" textWrap="true" text="Biodiversity" class="event_description"/>
+                      </GridLayout>
+                    </GridLayout> -->
+
+
+                  <!-- <Button row="3" col="0" text="all day" tap="{{ doCreateAllDayEvent }}" class="button button-positive"/>
+                  <Button row="3" col="1" text="in custom calendar" tap="{{ doCreateEventInCustomCalendar }}" class="button button-positive"/>
+                  <Button row="4" colSpan="2" text="delete events" tap="{{ doDeleteEvents }}" class="button button-danger"/> -->
+                  </StackLayout>
+                </StackLayout>
+              </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+        <!-- Top buttons section -->
+        <FlexboxLayout justifyContent="space-between" flexShrink="1">
+          <Image class="drawerTopButton" src="~/images/buttons/button_floating_calendar.png"
+            visibility="{{ selectedDrawerTab == 0 ? 'visible' : 'collapsed' }}"
+            tap="{{ onTapDrawerCalendarButton }}"/>
+          <Image class="drawerTopButton" src="~/images/buttons/button_floating_chat.png"
+            visibility="{{ selectedDrawerTab == 1 ? 'visible' : 'collapsed' }}"
+            tap="{{ onTapDrawerChatButton }}"/>
+          <Image class="drawerHandleDecor" alignSelf="flex-start"/>
+          <Image class="drawerTopButton" src="~/images/buttons/button_floating_share.png" tap="{{ onTapShareButton }}"/>
+        </FlexboxLayout>
+
+      </FlexboxLayout>
+    </CardDrawer:CarInfoCardDrawer>
+    <!-- <StackLayout width="100%" height="100%">
+      <Label text="Here is the bottom stack layout"/>
+      <AbsoluteLayout height="100%" width="100%">
+        <Card:CardView left="120" height="30" width="30"
+          elevation="5" radius="20"
+          class="bottomOverlayButton">
+          <Button borderRadius="1" width="40" height="40" margin="-5"
+            color="gold"
+            text="{{icons.home}}"
+            tap="{{onTapHomeButton}}"
+            class="icon"/>
+        </Card:CardView>
+        <Card:CardView left="160" height="30" width="30"
+          elevation="5" radius="20"
+          class="bottomOverlayButton">
+          <Button borderRadius="1" width="40" height="40" margin="-5"
+            color="steelblue"
+            text="{{icons.share}}"
+            tap="{{onTapShareButton}}"
+            class="icon"/>
+        </Card:CardView>
+        <Card:CardView left="200" height="30" width="30"
+          elevation="5" radius="20"
+          class="bottomOverlayButton">
+          <Button borderRadius="1" width="40" height="40" margin="-5"
+            color="forestgreen"
+            text="{{icons.message}}"
+            tap="{{onTapChatButton}}"
+            class="icon"/>
+        </Card:CardView>
+      </AbsoluteLayout>
+    </StackLayout> -->
+    
+  <!-- Hidden Text Field -->
+  <TextField id="hiddenTextField" width="0" height="0"/>
+
+  </GridLayout>
+
+</Page>

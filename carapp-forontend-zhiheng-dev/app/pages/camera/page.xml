@@ -1,0 +1,38 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Cam="@nstudio/nativescript-camera-plus"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <Cam:CameraPlus height="{{screenHeight}}" id="camPlus" loaded="camLoaded"
+      galleryPickerMode="multiple" enableVideo="false" confirmVideo="false"
+      saveToGallery="true" showCaptureIcon="false" showGalleryIcon="false"
+      showToggleIcon="false" showFlashIcon="false" confirmPhotos="true"
+      flashOffIcon="icon" autoSquareCrop="true" insetButtons="true"
+      insetButtonsPercent="0.02" imagesSelectedEvent="{{ imagesSelectedBinding }}"
+      debug="true"/>
+      <FlexboxLayout class="topButtonGroup" verticalAlignment="top" justifyContent="space-between">
+        <!-- Top button group is hard-coded to have 65 height -->
+        <Image class="closeButton" src="~/images/icons/icon_close_white.png" tap="{{ onTapCloseButton }}"/>
+        <StackLayout orientation="horizontal" style="margin-right: 10;">
+          <Image class="topButton"/>
+          <Image class="topButton"/>
+        </StackLayout>
+      </FlexboxLayout>
+      <GridLayout class="bottomSection" verticalAlignment="bottom" height="{{ bottomSectionHeight }}">
+        <StackLayout class="tipsSection" verticalAlignment="top">
+          <Label class="tipsHeading" textWrap="true" text="Photography Tips:"/>
+          <Label class="tips" textWrap="true" text="- Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do"/>
+          <Label class="tips" textWrap="true" text="- enim ad minim veniam, quis nostrud exercitation ullamco laboris"/>
+        </StackLayout>
+        <FlexboxLayout class="bottomButtonGroup" verticalAlignment="bottom" justifyContent="space-between">
+          <Image class="galleryButton"/>
+          <Image class="captureButton" tap="{{ onTapTakePictureButton }}"/>
+          <Image class="filler"/>
+          <!-- Filler button to be able to use flexbox's justify-content: space-between -->
+        </FlexboxLayout>
+      </GridLayout>
+      <!-- <StackLayout verticalAlignment="center">
+        <Image id="testImage" width="320" height="320" src="" class="border-red"/>
+      </StackLayout> -->
+  </GridLayout>
+</Page>

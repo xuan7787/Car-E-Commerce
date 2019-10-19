@@ -1,0 +1,96 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Login="components/login"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <!-- Cancel Button section-->
+    <StackLayout width="100%" verticalAlignment="top" style="padding-top: 20; padding-left: 30;">
+      <Label text="Cancel" style="font-weight: 500; color: #FF415F" tap="{{ onTapCancelButton }}"/>
+    </StackLayout>
+
+    <StackLayout width="100%" class="mainStackLayout">
+      <Image class="signUpImage" horizontalAlignment="center" verticalAlignment="top" src="~/images/graphics/image_emailsignup@2x.png"/>
+      
+      <!-- First Row -->
+      <TextField class="inputField usernameField" horizontalAlignment="stretch" verticalAlignment="top"
+        hint="Username" id="usernameField" returnKeyType="next" returnPress="{{ onTapKeyboardNext }}"
+        text="{{usernameInput}}"/>
+
+      <!-- Second Row -->
+      <GridLayout class="secondRow" horizontalAlignment="stretch" verticalAlignment="top">
+        <TextField class="inputField emailField" horizontalAlignment="stretch"
+          hint="Email" id="emailField" returnKeyType="next" returnPress="{{ onTapKeyboardNext }}"
+          text="{{emailInput}}"/>
+        <!-- <Image class="cameraButton" horizontalAlignment="right" src="~/images/buttons/button_right.png"/> -->
+      </GridLayout>
+
+      <!-- Third Row -->
+      <GridLayout class="thirdRow" horizontalAlignment="stretch" verticalAlignment="top" columns="*,*">
+        <TextField class="inputField passwordField" col="0"
+          hint="Password" id="passwordField" returnKeyType="next" returnPress="{{ onTapKeyboardNext }}"
+          secure="true"
+          text="{{passwordInput}}"/>
+        <TextField class="inputField passwordReentryField" col="1"
+          hint="Re-Entry" id="confirmPasswordField"
+          secure="true"
+          text="{{passwordReentryInput}}"/>
+      </GridLayout>
+
+      <!-- Section below input fields -->
+      <StackLayout class="passwordStrengthSection" id="passwordStrengthSection" height="75">
+        <Progress id="passwordStrengthBar" class="strengthProgressBar" value="0"
+          maxValue="4"/>
+        <Label class="strengthLabel" id="strengthLabel" text="Password Strength" textWrap="true" color="darkgray"/>
+      </StackLayout>
+
+      <!-- Success message section -->
+      <StackLayout class="successMessageSection" id="successMessageSection" height="75" visibility="collapsed" opacity="{{ confirmEmailSectionsOpacity }}">
+        <Label id="successMessage" textWrap="true" style="font-size: 13; text-align: center; margin-top: 3">
+          <FormattedString>
+            <Span text="We've sent email to " color="silver"/>
+            <Span text="{{ emailInput }}" color="#FF415F"/>
+            <Span text=" to confirm its validity. Enter the code in the email to complete your registration" color="silver"/>
+          </FormattedString>
+        </Label>
+      </StackLayout>
+
+      <!-- Navigation Button -->
+      <Login:SubmitButton id="submitButton" class="submitButton" verticalAlignment="bottom" 
+        tap="{{ onTapSubmitButton }}" borderRadius="12">
+        <Image id="submitButtonArrow" class="submitButtonArrow" src="~/images/buttons/button_right_nobackground.png" verticalAlignment="center"/>
+        <ActivityIndicator id="submitActivityIndicator" color="white" busy="false"/>
+        <Image id="submitButtonTick" class="submitButtonTick" src="~/images/buttons/button_tick_nobackground.png" visibility="collapsed"/>
+      </Login:SubmitButton>
+    </StackLayout>
+
+    <!-- Email verification section -->
+    <StackLayout id="verifyEmailSection" class="verifyEmailSection" verticalAlignment="bottom"
+      opacity="{{ confirmEmailSectionsOpacity }}">
+      <FlexboxLayout class="verifyEmailInputGroup" justifyContent="space-between">
+        <TextField class="verifyEmailInput" maxLength="1" keyboardType="phone"
+          id="verifyEmailInput0"/>
+        <TextField class="verifyEmailInput" maxLength="1" keyboardType="phone"
+          id="verifyEmailInput1"/>
+        <TextField class="verifyEmailInput" maxLength="1" keyboardType="phone"
+          id="verifyEmailInput2"/>
+        <TextField class="verifyEmailInput" maxLength="1" keyboardType="phone"
+          id="verifyEmailInput3"/>
+        <TextField class="verifyEmailInput" maxLength="1" keyboardType="phone"
+          id="verifyEmailInput4"/>
+        <TextField class="verifyEmailInput" maxLength="1" keyboardType="phone"
+          id="verifyEmailInput5"/>
+      </FlexboxLayout>
+      <Label style="font-size: 13; color: silver; margin-top: 5; margin-bottom: 40" text="Enter your 6-digit verification code here." horizontalAlignment="center"/>
+      <Label style="font-size: 13; margin-bottom: 20" horizontalAlignment="center">
+        <FormattedString>
+          <Span text="If you haven't received the email, " color="silver"/>
+          <Span text="Resend confirmation email" color="#FF415F"/>
+        </FormattedString>
+      </Label>
+    </StackLayout>
+
+    <!-- Hidden Text Field -->
+    <TextField id="hiddenTextField" width="0" height="0"/>
+
+  </GridLayout>
+</Page>

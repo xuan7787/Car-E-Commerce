@@ -1,0 +1,12 @@
+@import './page-common.css';
+
+.searchResultItemCard{
+  radius: 12;
+}
+.searchResultCarImage{
+  border-top-left-radius: 12;
+  border-top-right-radius: 12;
+}
+.infoRow{
+  margin-top: -3;
+}

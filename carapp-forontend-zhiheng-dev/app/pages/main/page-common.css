@@ -1,0 +1,408 @@
+/* Nav Bar */
+.navBar{
+  border-width: 1;
+  border-color: transparent;
+  height: 50;
+}
+.sideButton{
+  width: 30;
+  height: 30;
+  top: 15;
+  duration: 150;
+}
+.sideButton.messages{
+  horizontal-alignment: left;
+  margin-left: 0;
+  hidden-translate-x: -40;
+}
+.sideButton.profile{
+  horizontal-alignment: right;
+  margin-right: 0;
+  hidden-translate-x: 40;
+}
+.sideButton.favourites{
+  horizontal-alignment: right;
+  margin-right: 0;
+  hidden-translate-x: 40;
+}
+.searchCancelButton{
+  horizontal-alignment: right;
+  margin-right: 0;
+  width: 19;
+  height: 19;
+  hidden-translate-x: -35;
+  duration: 150;
+}
+.searchField{
+  horizontal-alignment: stretch;
+  margin-left: 35;
+  margin-right: 35;
+  height: 25;
+  border-radius: 1000;
+  background-color: lightgray;
+  padding-top: 2;
+  padding-bottom: 2;
+  padding-right: 10;
+  font-size: 16;
+
+  duration: 150;
+  expanded-padding-left: 30;
+  expanded-delta-margin-left: -30;
+  expanded-delta-margin-right: 0;
+}
+.searchIcon{
+  horizontal-alignment: left;
+  width: 19;
+  height: 19;
+
+  duration: 150;
+  expanded-margin-left: 10;
+  search-field-margin-left: 20;
+  search-field-margin-right: 20;
+}
+
+/* List Car Card Drawer */
+.listCarCardDrawer{
+  width: 360; /* To change for smaller sized iPhones */
+  duration: 300;
+  margin-bottom: -50;
+  padding-bottom: 50;
+  radius: 20;
+  elevation: 10;
+}
+.headingLabel{
+  color: black;
+  font-size: 15;
+}
+.descriptionLabel{
+  color:gray;
+  font-size: 11;
+}
+.inputField{
+  background-color: whitesmoke;
+  height: 35;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 5;
+  padding-right: 5;
+  border-radius: 10;
+  font-size: 20;
+  placeholder-color: darkgray;
+}
+.closeDrawerButton{
+  vertical-alignment: top;
+  horizontal-alignment: left;
+
+  width: 19;
+  height: 19;
+  margin-top: 10;
+  margin-left: 10;
+}
+.drawerHandleDecorContainer{
+  vertical-alignment: top;
+  horizontal-alignment: center;
+
+  height: 25;
+  width: 150;
+}
+.drawerHandleDecor{
+  vertical-alignment: top;
+  horizontal-alignment: center;
+
+  width: 60;
+  height: 5;
+  margin-top: 5;
+  background-color: gainsboro;
+  border-radius: 1000;
+  margin-top: 10;
+}
+.listCarCardDrawerStackLayout{
+  padding-left: 20;
+  padding-right: 20;
+  padding-bottom: 200;/* Extends the scroll view */
+}
+.listCarCardDrawerScrollView{
+  margin-top: 50;
+}
+.listCarCardDrawerScrollView.suspended{
+  margin-top: 144;
+}
+.listCarPostingImage{
+  horizontal-alignment: center;
+  stretch: aspect-fill;
+  height: 320;
+  width: 320;
+  border-radius: 8;
+  border-width: 2;
+  border-color: rgb(2, 93, 121);
+  background: #f8f8f8;
+}
+.listCarPostingImageGallery{
+  margin-top: 10;
+}
+/* Carplate + OwnerID section */
+.inputField.carplate{
+  background-image: url('~/images/graphics/image_carplate_background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 73.4;
+  color: white;
+  font-size: 54;
+  text-align: center;
+  font-family: Duke;
+  text-transform: uppercase;
+  margin-top: 10;
+}
+.helperLabel{
+    color: darkgray;
+    font-size: 12;
+}
+.inputField.ownerId{
+  width: 50%;
+  margin-right: 10;
+}
+.syncButton{
+  margin-right: 10;
+  height: 35;
+  width: 35;
+}
+.fuelSelection{
+  padding: 4;
+  border-radius: 5;
+}
+.fuelIcon{
+  height: 40;
+  width: 40;
+}
+/* First Row */
+.inputField.modelName{
+  margin-top: 15;
+}
+/* Second Row */
+.secondRow{
+  margin-top: 10;
+}
+.secondRowLeftSection{
+  margin-right: 10;
+}
+.depreciationLabel{
+}
+.depreciationIcon{
+  width: 22;
+  height: 22;
+  margin-right: 5;
+}
+.inputField.depreciation{
+  height: 20;
+  border-radius: 6;
+  font-size: 16;
+}
+.inputField.price{
+  vertical-alignment: bottom;
+}
+/* Type Layouts */
+.typeSection{
+  margin-top: 20;
+}
+.typeGridLayout{
+  width: 100%;
+  height: 185;
+  rows: *,*,*;
+  columns: *,*,*,*;
+  margin-top: 5;
+}
+.carTypeImage{
+  width: 65;
+  height: 35;
+}
+.carTypeLabel{
+  color: darkgray;
+  text-align: center;
+  font-size: 12;
+  margin-bottom: 5;
+}
+.carTypeStack{
+  border-radius: 5;
+  margin-top: 4;
+  margin-right: 2;
+  margin-left: 2;
+}
+/* Make Layouts */
+.makeSection{
+  margin-top: 15;
+}
+.makeImage{
+  height: 45;
+  width: 45;
+  /* border-width: 2; */
+  border-radius: 5;
+}
+
+.moreButton{
+  margin: 3 0;
+  width: 45;
+  font-size: 11;
+  color:white;
+  background: rgb(201, 201, 201);
+  border-radius: 5;
+  padding: 1 2;
+  text-align: center;
+}
+
+/* Bottom Floating Buttons */
+.floatingButtonsContainer{
+  height: 100; 
+  hidden-translate-y: 100;
+}
+.applySearchButtonContainer{
+  height: 80;
+  hidden-translate-y: 150;
+}
+.applySearchButton{
+  width: 280;
+}
+.listAndSellButtonContainer{
+  padding-top: 3;
+  height: 60;
+  hidden-translate-y: 200;
+  margin-bottom: 20;
+  width: 78%;
+}
+.listAndSellButton{
+  width: 100%;
+}
+
+.registrationDateMileageSection{
+  margin-top: 20;
+}
+
+.dateDisplayBox {
+  font-size: 26;
+  height: 32;
+  width: 22;
+  margin-right: 3;
+  text-align: center;
+  font-family: 'Avenir Next';
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  color: #747474;
+}
+.dateDisplayBox.registrationDate{
+  margin-top: 10;
+  margin-bottom: 10;
+}
+
+.mileageDisplayBox {
+  margin: 10 0;
+  font-size: 26;
+  height: 32;
+  width: 22;
+  margin-right: 3;
+  text-align: center;
+  font-family: 'Avenir Next';
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  color: #d81717;
+}
+
+.transmissionSeatsDoorsSection{
+  margin-top: 20;
+}
+
+.transmissionButton{
+  border-radius: 6;
+  color: white;
+  background-color: gray;
+  width: 45%;
+  text-align:center;
+  margin-top: 5;
+  padding-top: 2;
+  height: 17;
+  font-size: 10;
+}
+
+.seatsDoorsDisplayBox{
+  font-size: 26;
+  height: 32;
+  width: 24;
+  text-align: center;
+  font-family: 'Avenir Next';
+  border-radius: 8px;
+  border-width: 1.5;
+  border-color: #d81717;
+  color: #999;
+}
+
+.seatsDoorsAddSubtractButton{
+  font-size: 26;
+  height: 30;
+  width: 20;
+  text-align: center;
+  font-family: 'Avenir Next';
+  color: #999;
+}
+
+.descriptionSection{
+  margin-top: 15;
+}
+
+.descriptionTextScrollView{
+  margin: 8 0;
+  border-radius: 10;
+  height: 200;
+  width: 100%;
+  background: whitesmoke;
+}
+
+.descriptionTextView{
+  background: whitesmoke;
+  font-size: 14;
+}
+
+.accessoriesSection{
+  margin-top: 15;
+  width: 320;
+}
+
+.accessoriesInteractiveSection{
+  margin-top: 10;
+  height: 133;
+}
+
+.accessoriesImages{
+  margin-top: 10;
+  height: 75;
+}
+
+.addImageButton{
+  margin-right: 10;
+  font-size: 50;
+  width: 40;
+  text-align: center;
+  border-radius: 10;
+  background-color: #efefef;
+  color: #ccc;
+  height: 100%;
+}
+
+.contactIcon{
+  height: 35;
+  width: 35;
+  margin-right: 10;
+}
+
+.border-red{
+  border-width: 1;
+  border-color: red;
+}
+
+.border-blue{
+  border-width: 1;
+  border-color: blue;
+}
+
+.border-green{
+  border-width: 1;
+  border-color: green;
+}

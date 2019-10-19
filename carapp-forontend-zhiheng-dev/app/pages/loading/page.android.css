@@ -1,0 +1,5 @@
+@import './page-common.css';
+
+.numberWheel *{
+  padding-top: -5;
+}

@@ -1,0 +1,8 @@
+@import './page-common.css';
+
+.inputField{
+  font-weight: 900;
+}
+.headingLabel{
+  font-weight: 900; 
+}

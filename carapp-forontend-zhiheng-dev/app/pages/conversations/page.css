@@ -1,0 +1,68 @@
+.pageHeading{
+  font-size: 35;
+  color: red;
+  font-family: 'Avenir Next';
+  font-weight: 900;
+}
+.speechBubbleIcon{
+  height: 25
+}
+.tabButtonsContainer{
+  margin: 10 0;
+}
+.tabButton{
+  height: 100%;
+  border-radius: 50;
+  background: #bebebe;
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-right: 5;
+  margin-left: 5;
+  font-size: 14;
+}
+.tabButton.active{
+  background: #3a88fb;
+}
+.searchResultsScrollView{
+  horizontal-alignment: stretch;
+  height: 200;
+}
+.conversationCard{
+  border-radius: 10;
+  height: 80;
+  background: #f2f2f2;
+  margin: 6 0;
+}
+.conversationImageContainer{
+  height: 60;
+  width: 60;
+  margin: 10;
+  background: #bebebe;
+}
+.conversationImage{
+  max-height: 100%;
+  max-width: 100%;
+}
+.senderNameLabel{
+  color: #fc0034;
+  font-size: 18;
+  padding-bottom: -3;
+}
+.timestampLabel{
+  color: #7d7d7d;
+  font-size: 10;
+}
+.messageContent{
+  color: #7d7d7d;
+  font-size: 14;
+  margin-top: 5;
+}
+.border-red{
+  border-color: red;
+  border-width: 1;
+}
+.border-blue{
+  border-color: blue;
+  border-width: 1;
+}

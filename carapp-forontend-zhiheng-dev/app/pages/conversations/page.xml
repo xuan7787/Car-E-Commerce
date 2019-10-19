@@ -1,0 +1,73 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:lv="nativescript-ui-listview"
+  actionBarHidden="true">
+  <StackLayout width="100%" height="100%">
+
+    <!-- Heading and back button -->
+    <FlexboxLayout orientation="horizontal" height="35" width="{{viewWidth}}" 
+      class="headingFlexbox" justifyContent="flex-end" style="margin: 10 0">
+      <StackLayout flexGrow="1">
+        <Image src="~/images/icons/icon_back.png" height="30"
+          style="margin-top: 2" horizontalAlignment="left"
+          tap="{{onTapBackButton}}"/>
+      </StackLayout>
+      <AbsoluteLayout>
+      <Image top="-3" left="-10" src="~/images/icons/icon_messages.png"
+          class="speechBubbleIcon"/>
+        <Label top="0" left="0" text="Conversations" class="pageHeading"/>
+      </AbsoluteLayout>
+    </FlexboxLayout>
+
+    <!-- Tab buttons -->
+    <FlexboxLayout height="25" width="{{viewWidth}}" class="tabButtonsContainer"
+      justifyContent="space-between">
+      <Label class="{{ currentTab == 'Inbox' ? 'tabButton active' : 'tabButton' }}"
+        text="Inbox" tap="{{onTapTabButton}}"/>
+      <Label class="{{ currentTab == 'Archive' ? 'tabButton active' : 'tabButton' }}"
+        text="Archive" tap="{{onTapTabButton}}"/>
+      <Label class="{{ currentTab == 'Trash' ? 'tabButton active' : 'tabButton' }}"
+        text="Trash" tap="{{onTapTabButton}}"/>
+      <Label class="{{ currentTab == 'Alerts' ? 'tabButton active' : 'tabButton' }}"
+        text="Alerts" tap="{{onTapTabButton}}"/>
+    </FlexboxLayout>
+    
+    <!-- Conversations section -->
+    <ScrollView class="conversationsScrollView" height="100%" width="100%">
+      <lv:RadListView class="conversationsListView"
+        items="{{conversationsData}}"
+        itemTap="{{onTapConversation}}"
+        id="conversationsListView"
+        width="100%">
+
+        <lv:RadListView.listViewLayout>
+          <lv:ListViewStaggeredLayout scrollDirection="Vertical" spanCount="1"/>
+        </lv:RadListView.listViewLayout>
+
+        <lv:RadListView.itemTemplate>
+          <StackLayout width="100%">
+            <GridLayout rows="*" columns="80,*,80" class="conversationCard" orientation="horizontal" width="{{$parents['Page'].viewWidth}}">
+              <StackLayout class="conversationImageContainer" row="0" col="0">
+                <Image src="{{ senderImage }}" class="conversationImage"/>
+              </StackLayout>
+              <StackLayout row="0" col="1" height="100%">
+                <FlexboxLayout height="30" alignItems="flex-end" flexFlow="row nowrap">
+                  <Label class="senderNameLabel" text="{{ senderName }}" flexGrow="1"/>
+                  <Label class="timestampLabel" text="{{ datetime }}"/>
+                </FlexboxLayout>
+                <Label class="messageContent" text="{{lastMessage}}" textWrap="true"/>
+              </StackLayout>
+              <StackLayout class="conversationImageContainer" row="0" col="2">
+                <Image src="{{ lastMessageImage }}" class="conversationImage"/>
+              </StackLayout>
+            </GridLayout>
+          </StackLayout>
+        </lv:RadListView.itemTemplate>
+  		
+      </lv:RadListView>
+    </ScrollView>
+
+  </StackLayout>
+
+</Page>

@@ -1,0 +1,128 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:lv="nativescript-ui-listview"
+  actionBarHidden="true">
+
+    <!-- User listings -->
+    <ScrollView class="searchResultsScrollView" id="searchResultsScrollView">
+      <StackLayout>
+        <StackLayout orientation="horizontal" style="margin-top: 5; margin-right: -10">
+          <GridLayout class="profileSection" rows="auto,auto,auto,auto" columns="auto,auto" height="{{ userProfileHeight }}">
+            <Label class="followersCount" row="0" col="0"
+              text="58"/>
+            <Label class="profileInfoLabel" row="1" col="0"
+              text="followers"/>
+            <Label class="followingCount" row="0" col="1"
+              text="59"/>
+            <Label class="profileInfoLabel" row="1" col="1"
+              text="following"/>
+            <Label class="yourListingsHeading" row="2" col="0"
+              colSpan="2" text="Your Listings"/>
+            <Label class="profileInfoLabel" row="3" col="0"
+              colSpan="2" text="{{ searchResultData.length+' results' }}"/>
+          </GridLayout>
+          <Card:CardView class="profileCard" shadowRadius="5" shadowOpacity="0.3">
+            <StackLayout orientation="horizontal">
+              <StackLayout class="profileDetails">
+                <Label class="profileName" text="{{ userInfo['first-name'] + ' ' + userInfo['last-name'] }}"/>
+                <Label class="profileMiniLabel" text="{{ '@'+userInfo.username }}"/>
+                <StackLayout class="profileRating" orientation="horizontal">
+                  <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+                  <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+                  <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+                  <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+                  <Image class="ratingStar" src="~/images/icons/icon_yellowstar.png"/>
+                  <Label class="profileMiniLabel" text="4.7" style="margin-left: 4"/>
+                </StackLayout>
+                <StackLayout class="profileOtherDetails" orientation="horizontal">
+                  <Label class="profileMiniLabel" text="Verified" style="margin-right: 5"/>
+                  <Image class="profileMiniIcon" src="~/images/icons/icon_profile_mobile.png"/>
+                  <Image class="profileMiniIcon" src="~/images/icons/icon_profile_mail.png"/>
+                  <Image class="profileMiniIcon" src="~/images/icons/icon_profile_verified.png"/>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout class="profilePictureContainer">
+                <Image class="profilePicture" src="~/images/icons/icon_profile.png"/>
+              </StackLayout>
+              <FlexboxLayout class="profileButtonsContainer" flexDirection="column" justifyContent="space-around">
+                <Image class="profileButton" src="~/images/icons/icon_share.png"/>
+                <Image class="profileButton" src="~/images/icons/icon_settings_coloured.png"
+                  visibility="{{ selfProfile ? 'visible' : 'collapsed'}}"/>
+                <Image class="profileButton" src="~/images/icons/icon_profile_follow.png"
+                  visibility="{{ !selfProfile ? 'visible' : 'collapsed'}}"/>
+              </FlexboxLayout>
+            </StackLayout>
+          </Card:CardView>
+        </StackLayout>
+
+        <lv:RadListView class="searchResultsListView"
+          items="{{searchResultData}}"
+          itemTap="{{onTapCarEntry}}"
+          id="searchResultsListView"
+          width="{{viewWidth}}" height="{{ listViewHeight }}">
+          <lv:RadListView.listViewLayout>
+            <lv:ListViewStaggeredLayout scrollDirection="Vertical" spanCount="2" />
+          </lv:RadListView.listViewLayout>
+
+          <lv:RadListView.itemTemplate>
+            <Card:CardView class="{{index == 1 ? 'searchResultItemCard secondCard' : 'searchResultItemCard'}}" 
+              overflow="hidden" height="{{ $parents['Page'].cardHeight }}">
+
+              <StackLayout>
+                <GridLayout class="searchResultCarImageContainer" height="{{ $parents['Page'].cardWidth }}">
+                  <Image class="searchResultCarImage"
+                    src="~/images/graphics/image_placeholder_caratmbs.jpg" height="{{ $parents['Page'].cardWidth }}"/>
+                  <Image class="searchResultFavouriteButtonImage"
+                    src="~/images/buttons/button_listing_favourite_inactive.png"
+                    opacity="{{$parents['RadListView'].searchResultFavouriteButtonOpacity}}"
+                    visibility="{{ !favourited ? 'visible' : 'collapsed'}}"/>
+                  <Image class="searchResultFavouriteButtonImage"
+                    src="~/images/buttons/button_listing_favourite_active.png"
+                    opacity="{{$parents['RadListView'].searchResultFavouriteButtonOpacity}}"
+                    visibility="{{ favourited ? 'visible' : 'collapsed'}}"/>
+                  <Image class="searchResultFavouriteButtonTapArea" tap="{{onTapFavouriteListingButton}}"
+                    xpostid="{{id}}" xindex="{{index}}"/>
+                </GridLayout>
+                <Label class="searchResultCarName" text="{{name}}"/>
+                <StackLayout class="infoRow first">
+                  <Image class="innerIcon"
+                    src="~/images/icons/icon_calendar.png"/>
+                  <Label class="infoLabel timeRemaining"
+                    text="4 years left"/>
+                  <Image class="innerIcon"
+                    src="~/images/icons/icon_key.png"/>
+                  <Label class="infoLabel ownersCount"
+                    text="{{owners}}"/>
+                </StackLayout>
+                <StackLayout class="infoRow second">
+                  <Image class="innerIcon"
+                    src="~/images/icons/icon_mileage.png"/>
+                  <Label class="infoLabel mileage"
+                    text="{{mileage}}"/>
+                </StackLayout>
+                <Label class="priceLabel"
+                  text="{{'$' + price}}"/>
+                <DockLayout class="infoRow third" stretchLastChild="false">
+                  <Image class="innerIcon" dock="left"
+                    src="~/images/icons/icon_share.png"/>
+                  <Label class="infoLabel" dock="right"
+                    text="$5,420 yearly"/>
+                  <Label class="spacingAfterShare" />
+                  <Image class="innerIcon" dock="right"
+                    src="~/images/icons/icon_depreciation.png"/>
+                </DockLayout>
+
+              </StackLayout>
+
+            </Card:CardView>
+
+          </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+
+      </StackLayout>
+
+    </ScrollView>
+
+
+</Page>

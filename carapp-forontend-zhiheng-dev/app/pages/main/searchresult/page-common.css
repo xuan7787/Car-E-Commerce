@@ -1,0 +1,79 @@
+
+.searchResultsScrollView{
+  horizontal-alignment: stretch;
+}
+.searchResultsListView{
+  horizontal-alignment: center;
+}
+.searchResultItemCard{
+
+  margin-left: 4;
+  margin-right: 4;
+
+  margin-top: 4;
+  margin-bottom: 4;
+
+  background-color: white;
+}
+.searchResultItemCard.secondCard{
+  margin-top: 60;
+}
+.searchResultCarImageContainer{
+  horizontal-alignment: stretch;
+}
+.searchResultCarImage{
+  stretch: aspectFill;
+}
+.searchResultFavouriteButtonImage{
+  horizontal-alignment: right;
+  vertical-alignment: top;
+  margin-right: -10;
+  width: 60;
+  height: 60;
+}
+.searchResultFavouriteButtonTapArea{
+  horizontal-alignment: right;
+  vertical-alignment: top;
+  margin-right: 8;
+  margin-top: 8;
+  width: 30;
+  height: 30;
+  background-color: transparent;
+  border-radius: 1;
+}
+.searchResultCarName{
+  margin-top: 5;
+  font-size: 20;
+  text-align: center;
+  color: black;
+}
+.infoRow{
+  orientation: horizontal;
+
+  margin-left: 8;
+  margin-right: 8;
+}
+.innerIcon{
+  width: 16;
+  height: 16;
+}
+.infoLabel{
+  font-size: 12;
+  color: gray;
+  margin-left: 3;
+  margin-top: 1.5;
+}
+/* First Row */
+.timeRemaining{
+  width: 75;
+}
+/* Price */
+.priceLabel{
+  margin-left: 8;
+  color: #FF415F;
+  font-size: 35;
+}
+/* Share and depreciation */
+.spacingAfterShare{
+  width: 16;
+}

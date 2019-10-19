@@ -1,0 +1,5 @@
+@import './page-common.css';
+
+.savedSearches .notificationNumberLabel{
+  margin-top: 4;
+}

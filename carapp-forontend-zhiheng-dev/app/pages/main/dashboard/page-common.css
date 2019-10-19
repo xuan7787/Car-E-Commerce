@@ -1,0 +1,92 @@
+/* @import './page-common.css'; */
+
+/* .mainStackLayout{
+
+} */
+/* Featured */
+.featuredSlidesContainer{
+  height: 140;
+  border-radius: 10;
+  width: 250;
+}
+
+.featuredSlides{
+  height: 140;
+  border-radius: 10;
+}
+.featuredImage{
+  stretch: aspectFill;
+}
+.paginationContainer{
+  margin-top: 10;
+  width: 80;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.paginationDot{
+  background-color: orange;
+  border-radius: 1000;
+  width: 10;
+  height: 10;
+}
+
+/* Circle Buttons */
+.circleButtons{
+  margin-top: 15;
+  justify-content: space-between;
+}
+.circleButtons .circleButtonFrame{
+  background-color: #EFEFEF;
+  border-radius: 1000;
+  width: 70;
+  height: 70;
+}
+.circleButtons .buttonLabel{
+  text-align: center;
+  font-size: 12;
+  color: black;
+}
+
+/* Saved Searches */
+.savedSearchesHeading{
+  margin-top: 10;
+  orientation: horizontal;
+}
+.savedSearchesHeading .headingIcon{
+  width: 20;
+  height: 20;
+}
+.savedSearchesHeading .headingLabel{
+  margin-left: 5;
+  font-size: 20;
+}
+.savedSearches{
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.savedSearches .imageBox{
+  margin-top: 10;
+  background-color: whitesmoke;
+  border-radius: 8;
+}
+.savedSearches .imageBoxLabel{
+  text-align: center;
+  font-size: 14;
+}
+.notificationNumberContainer{
+  top: 0;
+  width: 33;
+  height: 33;
+}
+.savedSearches .notificationNumberBase{
+  width: 100%;
+  height: 100%;
+}
+.savedSearches .notificationNumberLabel{
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 20;
+  text-align: center;
+}

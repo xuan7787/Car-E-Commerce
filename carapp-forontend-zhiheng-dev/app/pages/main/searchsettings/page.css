@@ -1,0 +1,220 @@
+/* Common */
+Label.sectionHeadingLabel{
+  color: black;
+  font-size: 14;
+}
+Label.sectionSubHeadingLabel{
+  color: darkgray;
+  font-size: 11;
+}
+
+/* Wrapped Item List */
+FlexboxLayout.wrappedItemList{
+  margin-top: 5;
+  margin-right: 0;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+FlexboxLayout.wrappedItemList .item{
+  border-radius: 6;
+  color: white;
+  background-color: gray;
+  padding-left: 4;
+  padding-right: 4;
+  margin-top: 5;
+  margin-left: 4;
+  padding-top: 2;
+  height: 17;
+  font-size: 10;
+}
+
+/* Search Settings Layouts */
+.searchSettingsStackLayout{
+  padding-bottom: 120;
+}
+Label.searchesHeadingLabel{
+  color: #FF415F;
+  font-size: 20;
+}
+GridLayout.settingsSection{
+  columns: *, 20;
+}
+StackLayout.savedSearchesHeading{
+  orientation: horizontal;
+  margin-top: 10;
+}
+StackLayout.savedSearchesHeading .headingIcon{
+  width: 14;
+  height: 14;
+}
+Image.deleteButton{
+  margin-top: 10;
+  width: 20;
+  height: 20;
+}
+
+/* Search Settings Heading Layouts */
+DockLayout.searchSettingsHeading{
+  margin-top: 15;
+  width: 100%;
+  height: 50;
+}
+Image.searchSettingsIcon{
+  width: 30;
+  height: 30;
+}
+Image.searchSettingsResetButton{
+  width: 50;
+}
+Label.searchSettingsHeadingLabel{
+  margin-top: 6;
+  color: #FF415F;
+  font-size: 16;
+}
+Label.searchSettingsResultCountLabel{
+  color: gray;
+  font-size: 14;
+}
+
+/* Sort By Layouts */
+StackLayout.sortBySection{
+  margin-top: 15;
+}
+
+/* Type Layouts */
+StackLayout.typeSection{
+  margin-top: 15;
+}
+GridLayout.typeGridLayout{
+  width: 100%;
+  height: 120;
+  rows: *,*;
+  columns: *,*,*,*;
+  margin-top: 5;
+}
+Image.carTypeImage{
+  width: 70;
+  height: 40;
+}
+Label.carTypeLabel{
+  color: darkgray;
+  text-align: center;
+  font-size: 12;
+}
+.carTypeStack{
+  border-radius: 5;
+  margin-top: 4;
+  margin-right: 2;
+  margin-left: 2;
+}
+
+/* Make Layouts */
+.makeSection{
+  margin-top: 20;
+}
+.makeImage{
+  height: 45;
+  width: 45;
+  /* border-width: 2; */
+  border-radius: 5;
+  margin: 1;
+}
+
+.moreButton{
+  margin: 3 0;
+  width: 45;
+  font-size: 11;
+  color:white;
+  background: rgb(201, 201, 201);
+  border-radius: 5;
+  padding: 1 2;
+  text-align: center;
+}
+
+.registrationDateMileageSection{
+  margin-top: 20;
+}
+
+.registrationDateDisplayBox {
+  margin: 10 0;
+  font-size: 26;
+  height: 32;
+  width: 22;
+  margin-right: 3;
+  text-align: center;
+  font-family: 'Avenir Next';
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  color: #747474;
+}
+
+.mileageDisplayBox {
+  margin: 10 0;
+  font-size: 26;
+  height: 32;
+  width: 22;
+  margin-right: 3;
+  text-align: center;
+  font-family: 'Avenir Next';
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  color: #d81717;
+}
+
+.transmissionSeatsDoorsSection{
+  margin-top: 20;
+}
+
+.transmissionButton{
+  border-radius: 6;
+  color: white;
+  background-color: gray;
+  width: 45%;
+  text-align:center;
+  margin-top: 5;
+  padding-top: 2;
+  height: 17;
+  font-size: 10;
+}
+
+.seatsDoorsDisplayBox{
+  font-size: 26;
+  height: 32;
+  width: 24;
+  text-align: center;
+  font-family: 'Avenir Next';
+  border-radius: 8px;
+  border-width: 1.5;
+  border-color: #d81717;
+  color: #999;
+}
+
+.seatsDoorsAddSubtractButton{
+  font-size: 26;
+  height: 30;
+  width: 20;
+  text-align: center;
+  font-family: 'Avenir Next';
+  color: #999;
+}
+
+.descriptionSection{
+  margin-top: 15;
+}
+
+.descriptionTextScrollView{
+  margin: 8 0;
+  border-radius: 10;
+  height: 200;
+  width: 100%;
+  background: whitesmoke;
+}
+
+.descriptionTextView{
+  background: whitesmoke;
+  font-size: 14;
+}
+
+.accessoriesSection{
+  margin-top: 15;
+}

@@ -1,0 +1,542 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:Slides="nativescript-slides"
+  xmlns:ui="nativescript-modal-datetimepicker"
+  xmlns:Navbar="components/navbar"
+  xmlns:FloatingButtons="components/floating-buttons"
+  xmlns:CardDrawer="components/card-drawer"
+  actionBarHidden="true">
+  <GridLayout width="100%" height="100%">
+    <DockLayout width="100%" height="100%">
+      <!-- Nav Bar -->
+      <GridLayout class="navBar" dock="top" width="{{viewWidth}}">
+        <Navbar:SideButton class="sideButton messages"
+          src="~/images/icons/icon_messages.png"
+          tap="{{onTapNavBarMessagesButton}}"
+          shown="{{showMessagesButton}}"/>
+        <Navbar:SideButton class="sideButton profile"
+          src="~/images/icons/icon_profile.png"
+          tap="{{onTapNavBarProfileButton}}"
+          shown="{{showProfileButton}}"/>
+        <Navbar:SideButton class="sideButton favourites"
+          src="~/images/icons/icon_favourites.png"
+          tap="{{onTapNavBarFavouritesButton}}"
+          shown="{{showFavouritesButton}}"/>
+        <Navbar:SideButton class="searchCancelButton"
+          src="~/images/icons/icon_close_white.png"
+          tap="{{onTapNavBarCancelSearchButton}}"
+          shown="{{showCancelSearchButton}}"/>
+        <Navbar:SearchField class="searchField"
+          hint="Search"
+          text="{{navBarSearchFieldText}}"
+          tap="{{onTapNavBarSearchField}}"
+          expanded="{{expandSearchField}}"/>
+        <Navbar:SearchIcon class="searchIcon"
+          src="~/images/icons/icon_magnifyingglass.png"
+          expanded="{{expandSearchField}}"/>
+      </GridLayout>
+      <GridLayout dock="top">
+        <Frame id="mainFrame" width="100%" height="100%" defaultPage="pages/main/dashboard/page"></Frame>
+      </GridLayout>
+    </DockLayout>
+
+    <!-- Bottom Floating Buttons -->
+    <FloatingButtons:BottomFloatingButtonsContainer class="floatingButtonsContainer" verticalAlignment="bottom"
+      id="bottomFloatingButtons">
+      <FlexboxLayout width="100%" justifyContent="center">
+        <GridLayout width="100" visibility="{{ showHomeButton ? 'visible' : 'collapsed'}}">
+          <Image height="100" width="100"
+          src="~/images/buttons/button_floating_home.png"/>
+          <Button height="50" width="50" borderRadius="1" backgroundColor="transparent"
+            tap="{{onTapHomeButton}}"/>
+        </GridLayout>
+        <GridLayout width="100" visibility="{{ showListCarButton ? 'visible' : 'collapsed'}}">
+          <Image height="100" width="100"
+          src="~/images/buttons/button_floating_listcar.png"/>
+          <Button height="50" width="50" borderRadius="1" backgroundColor="transparent"
+            tap="{{onTapBottomListCarButton}}"/>
+        </GridLayout>
+      </FlexboxLayout>
+    </FloatingButtons:BottomFloatingButtonsContainer>
+    <!-- Search Apply Button -->
+    <FloatingButtons:BottomFloatingButtonsContainer class="applySearchButtonContainer" verticalAlignment="bottom"
+      id="applySearchButton">
+      <GridLayout width="100%">
+        <Image class="applySearchButton"
+          src="~/images/buttons/button_searchsettings_apply.png"
+          tap="{{onTapApplySearchButton}}"
+          style="margin-bottom: 150"/>
+      </GridLayout>
+    </FloatingButtons:BottomFloatingButtonsContainer>
+    <!-- List Car Card Drawer -->
+    <CardDrawer:NewListingCardDrawer id="listCarCardDrawer" class="listCarCardDrawer" verticalAlignment="bottom"
+      height="{{listCarCardDrawerHeight}}"
+      drawerClosed="{{onListCarCardDrawerClosed}}"
+      drawerState="0">
+      <GridLayout width="100%" height="100%">
+        <Image class="closeDrawerButton" src="~/images/icons/icon_close_white.png"
+          tap="{{onTapCloseDrawerButton}}"/>
+        <StackLayout class="drawerHandleDecorContainer" tap="{{onTapBottomListCarButton}}">
+          <Image class="drawerHandleDecor"/>
+        </StackLayout>
+        <ScrollView class="listCarCardDrawerScrollView" id="cardDrawerScrollView" width="100%">
+          <StackLayout class="listCarCardDrawerStackLayout" width="100%" verticalAlignment="top">
+            <!-- Drawer Contents -->
+            <Image class="listCarPostingImage"
+              src="{{listCarCarImage}}"
+              tap="{{onTapCarImage}}"/>
+            <FlexboxLayout class="listCarPostingImageGallery">
+              <Label class="addImageButton" text="+" tap="{{ onTapAddCarImage }}"/>
+            </FlexboxLayout>
+            
+            <!-- Carplate + Owner IC Number data retrieval section -->
+            <StackLayout>
+              <TextField class="inputField carplate" id="carplate" autocapitalizationType="allCharacters" maxLength="8" text="{{ plateNumberInput }}"/>
+              <Label class="helperLabel" text="Enter Car Plate Number" style="text-align: center; margin-bottom: 10; margin-top: 2"/>
+              <StackLayout orientation="horizontal">
+                <TextField class="inputField ownerId" hint="Owner ID"/>
+                <Image class="syncButton" src="~/images/buttons/button_sync.png"/>
+                <Label class="helperLabel" text="Sync data and obtain car details" textWrap="true"/>
+              </StackLayout>
+              <Label class="helperLabel" text="Last 5 Characters" style="margin-left: 2; margin-top: 2;"/>
+            </StackLayout>
+
+            <!-- COE, ARF, OMV, Engine & Owners section -->
+            <StackLayout>
+              <!-- COE -->
+              <GridLayout orientation="horizontal" width="100%" columns="*,*" style="margin-top: 10">
+                <StackLayout col="0" style="margin-right: 5">
+                  <Label class="headingLabel" text="COE Expiry Date"/>
+                  <StackLayout orientation="horizontal" tap="{{ selectCOEExpiryDateOverlay }}" style="margin-top: 3">
+                  <!-- Individual number boxes for registration date -->
+                    <Label class="dateDisplayBox" id="coeExpiryDateBox0" text="0"/>
+                    <Label class="dateDisplayBox" id="coeExpiryDateBox1" text="0" style="margin-right:6"/>
+                    <Label class="dateDisplayBox" id="coeExpiryDateBox2" text="0" />
+                    <Label class="dateDisplayBox" id="coeExpiryDateBox3" text="0" style="margin-right:6"/>
+                    <Label class="dateDisplayBox" id="coeExpiryDateBox4" text="0" />
+                    <Label class="dateDisplayBox" id="coeExpiryDateBox5" text="0" style="margin-right:0"/>
+                  </StackLayout>
+                </StackLayout>
+                <StackLayout col="1" style="margin-left: 5">
+                  <Label class="headingLabel" text="COE"/>
+                  <TextField class="inputField" style="margin-top: 3" hint="S$" text="{{ coeInput }}" keyboardType="phone"/>
+                </StackLayout>
+              </GridLayout>
+              <!-- ARF & OMV -->
+              <GridLayout orientation="horizontal" width="100%" columns="*,*" style="margin-top: 10">
+                <StackLayout col="0" style="margin-right: 5">
+                  <Label class="headingLabel" text="ARF"/>
+                  <TextField class="inputField" style="margin-top: 3" hint="S$" text="{{ arfInput }}" keyboardType="phone"/>
+                </StackLayout>
+                <StackLayout col="1" style="margin-left: 5">
+                  <Label class="headingLabel" text="OMW"/>
+                  <TextField class="inputField" style="margin-top: 3" hint="S$" text="{{ omvInput }}" keyboardType="phone"/>
+                </StackLayout>
+              </GridLayout>
+              <!-- Engine Capacity & Owners-->
+              <GridLayout orientation="horizontal" width="100%" columns="*,*" style="margin-top: 10">
+                <StackLayout col="0" style="margin-right: 5">
+                  <Label class="headingLabel" text="Engine Capacity"/>
+                  <TextField class="inputField" style="margin-top: 3" hint="cc" text="{{ engineCapacityInput }}" keyboardType="phone"/>
+                </StackLayout>
+                <StackLayout col="1" style="margin-left: 5">
+                  <Label class="headingLabel" text="Owners"/>
+                  
+                  <FlexboxLayout orientation="horizontal" style="margin-top: 3">
+                    <Label class="seatsDoorsAddSubtractButton" text="+" width="15" tap="{{onTapIncreaseOwnersCount}}"/>
+                    <StackLayout width="33%">
+                      <Label class="seatsDoorsDisplayBox"
+                        text="{{ownersInput}}"/>
+                    </StackLayout>
+                    <Label class="seatsDoorsAddSubtractButton" text="—" width="15" tap="{{onTapDecreaseOwnersCount}}"/>
+                  </FlexboxLayout>
+
+                </StackLayout>
+              </GridLayout>
+            </StackLayout>
+
+            <!-- Fuel section -->
+            <StackLayout>
+              <Label class="headingLabel" text="Fuel" style="margin-top: 10;margin-bottom: 10"/>
+              <FlexboxLayout justifyContent="space-around">
+                <StackLayout class="fuelSelection"
+                  backgroundColor="{{selectedFuelId == 1 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="fuelIcon" src="~/images/icons/icon_fuel_diesel.png" index="1" tap="{{ onTapFuelType }}"/>
+                  <Label class="helperLabel" style="text-align: center" text="Diesel"/>
+                </StackLayout>
+                <StackLayout class="fuelSelection"
+                  backgroundColor="{{selectedFuelId == 2 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="fuelIcon" src="~/images/icons/icon_fuel_hybrid.png" index="2" tap="{{ onTapFuelType }}"/>
+                  <Label class="helperLabel" style="text-align: center" text="Hybrid"/>
+                </StackLayout>
+                <StackLayout class="fuelSelection"
+                  backgroundColor="{{selectedFuelId == 3 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="fuelIcon" src="~/images/icons/icon_fuel_electric.png" index="3" tap="{{ onTapFuelType }}"/>
+                  <Label class="helperLabel" style="text-align: center" text="Electric"/>
+                </StackLayout>
+                <StackLayout class="fuelSelection"
+                  backgroundColor="{{selectedFuelId == 4 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="fuelIcon" src="~/images/icons/icon_fuel_petrol.png" index="4" tap="{{ onTapFuelType }}"/>
+                  <Label class="helperLabel" style="text-align: center" text="Petrol"/>
+                </StackLayout>
+              </FlexboxLayout>
+            </StackLayout>
+
+            <TextField class="inputField modelName"
+              text="{{modelNameInput}}"
+              hint="Model Name"/>
+            <GridLayout class="secondRow" columns="auto,*">
+              <DockLayout class="secondRowLeftSection" col="0">
+                <Label class="headingLabel depreciationLabel" dock="top"
+                  text="Depreciation/Year"/>
+                <Image class="depreciationIcon" dock="left"
+                  src="~/images/icons/icon_depreciation.png"/>
+                <TextField class="inputField depreciation"
+                  text="{{depreciationInput}}" hint="$5240" keyboardType="phone"/>
+              </DockLayout>
+              <TextField class="inputField price" col="1"
+                hint="Price" keyboardType="phone"
+                text="{{priceInput}}"/>
+            </GridLayout>
+            <!-- Type -->
+            <StackLayout class="typeSection">
+              <Label class="headingLabel" text="Type"/>
+              <GridLayout class="typeGridLayout">
+                <StackLayout row="0" col="0" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 0 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_hatchback.png"
+                    index="0" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Hatchback"/>
+                </StackLayout>
+                <StackLayout row="0" col="1" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 1 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_sedan.png"
+                    index="1" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Sedan"/>
+                </StackLayout>
+                <StackLayout row="0" col="2" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 2 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_convertible.png"
+                    index="2" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Convertible"/>
+                </StackLayout>
+                <StackLayout row="0" col="3" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 3 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_passenger.png"
+                    index="3" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Passenger"/>
+                </StackLayout>
+                <StackLayout row="1" col="0" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 4 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_mpv.png"
+                    index="4" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="MPV"/>
+                </StackLayout>
+                <StackLayout row="1" col="1" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 5 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_suv.png"
+                    index="5" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="SUV"/>
+                </StackLayout>
+                <StackLayout row="1" col="2" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 6 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_sport.png"
+                    index="6" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Sport"/>
+                </StackLayout>
+                <StackLayout row="1" col="3" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 7 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_stationwagon.png"
+                    index="7" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Stationwagon"/>
+                </StackLayout>
+                <StackLayout row="2" col="0" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 10 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/icons/icon_fuel_diesel.png"
+                    index="10" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Diesel"/>
+                </StackLayout>
+                <StackLayout row="2" col="1" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 11 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/icons/icon_fuel_hybrid.png"
+                    index="11" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Hybrid"/>
+                </StackLayout>
+                <StackLayout row="2" col="2" class="carTypeStack"
+                   backgroundColor="{{selectedTypeId == 9 ? selectedBackgroundColor : 'transparent'}}">
+                  <Image class="carTypeImage" src="~/images/graphics/image_cartype_others.png"
+                    index="9" tap="{{onTapCarType}}"/>
+                  <Label class="carTypeLabel" text="Others"/>
+                </StackLayout>
+              </GridLayout>
+            </StackLayout>
+
+            <!-- Make -->
+            <StackLayout class="makeSection">
+              <Label class="headingLabel" text="Make" style="margin-bottom: 10"/>
+              <WrapLayout style="width:100%">
+                <Image class="makeImage" src="~/images/graphics/image_brand_chery.png"
+                  index="0"
+                  backgroundColor="{{selectedMakeId == 0 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_datsun.png"
+                  index="1"
+                  backgroundColor="{{selectedMakeId == 1 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_ferrari.png"
+                  index="2"
+                  backgroundColor="{{selectedMakeId == 2 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_fiat.png"
+                  index="3"
+                  backgroundColor="{{selectedMakeId == 3 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_lamboghini.png"
+                  index="4"
+                  backgroundColor="{{selectedMakeId == 4 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_lexus.png"
+                  index="5"
+                  backgroundColor="{{selectedMakeId == 5 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_mitsubishi.png"
+                  index="6"
+                  backgroundColor="{{selectedMakeId == 6 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_nissan.png"
+                  index="7"
+                  backgroundColor="{{selectedMakeId == 7 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_porsche.png"
+                  index="8"
+                  backgroundColor="{{selectedMakeId == 8 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_proton.png"
+                  index="9"
+                  backgroundColor="{{selectedMakeId == 9 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_renault.png"
+                  index="10"
+                  backgroundColor="{{selectedMakeId == 10 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_rollsroyce.png"
+                  index="11"
+                  backgroundColor="{{selectedMakeId == 11 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_subaru.png"
+                  index="12"
+                  backgroundColor="{{selectedMakeId == 12 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_suzuki.png"
+                  index="13"
+                  backgroundColor="{{selectedMakeId == 13 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+              </WrapLayout>
+
+              <!-- More makes -->
+              <WrapLayout style="width:100%" visibility="{{ showMoreMake ? 'visible' : 'collapsed' }}">
+                <Image class="makeImage" src="~/images/graphics/image_brand_volkswagen.png"
+                  index="14"
+                  backgroundColor="{{selectedMakeId == 14 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_volvo.png"
+                  index="15"
+                  backgroundColor="{{selectedMakeId == 15 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_austin.png"
+                  index="16"
+                  backgroundColor="{{selectedMakeId == 16 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_bentley.png"
+                  index="17"
+                  backgroundColor="{{selectedMakeId == 17 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_toyota.png"
+                  index="18"
+                  backgroundColor="{{selectedMakeId == 18 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_chevrolet.png"
+                  index="19"
+                  backgroundColor="{{selectedMakeId == 19 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_chrysler.png"
+                  index="20"
+                  backgroundColor="{{selectedMakeId == 20 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_citroen.png"
+                  index="21"
+                  backgroundColor="{{selectedMakeId == 21 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_daihatsu.png"
+                  index="22"
+                  backgroundColor="{{selectedMakeId == 22 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+                <Image class="makeImage" src="~/images/graphics/image_brand_ford.png"
+                  index="23"
+                  backgroundColor="{{selectedMakeId == 23 ? selectedBackgroundColor : 'transparent'}}"
+                  tap="{{onTapCarMake}}"/>
+              </WrapLayout>
+            </StackLayout>
+
+            <!-- Button to display more make -->
+            <StackLayout orientation="horizontal">
+              <Label class="moreButton" text="{{ showMoreMake ? 'Less..' : 'More..'}}" tap="{{ onTapShowMoreMake }}"/>
+            </StackLayout>
+
+            <!-- StackLayout row which contains registration date & mileage forms -->
+            <StackLayout class="registrationDateMileageSection" orientation="horizontal">
+              <StackLayout id="registrationDateFormGroup">
+                <Label class="headingLabel" text="Registration Date"/>
+                <StackLayout orientation="horizontal" tap="{{ selectRegistrationDateOverlay }}">
+                <!-- Individual number boxes for registration date -->
+                  <Label class="dateDisplayBox registrationDate" id="registrationDateBox0" text="0"/>
+                  <Label class="dateDisplayBox registrationDate" id="registrationDateBox1" text="0" style="margin-right:6"/>
+                  <Label class="dateDisplayBox registrationDate" id="registrationDateBox2" text="0" />
+                  <Label class="dateDisplayBox registrationDate" id="registrationDateBox3" text="0" style="margin-right:6"/>
+                  <Label class="dateDisplayBox registrationDate" id="registrationDateBox4" text="0" />
+                  <Label class="dateDisplayBox registrationDate" id="registrationDateBox5" text="0" style="margin-right:0"/>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout id="mileageFormGroup" style="margin-left:12">
+                <Label class="headingLabel" text="Mileage"/>
+                <StackLayout orientation="horizontal" tap="{{ mileageInputOverlay }}">
+                <!-- Individual number boxes for registration date -->
+                  <Label class="mileageDisplayBox" id="mileageBox0" text="0"/>
+                  <Label class="mileageDisplayBox" id="mileageBox1" text="0" style="margin-right:6"/>
+                  <Label class="mileageDisplayBox" id="mileageBox2" text="0" />
+                  <Label class="mileageDisplayBox" id="mileageBox3" text="0" style="margin-right:6"/>
+                  <Label class="mileageDisplayBox" id="mileageBox4" text="0" />
+                  <Label class="mileageDisplayBox" id="mileageBox5" text="0" />
+                </StackLayout>
+              </StackLayout>
+            </StackLayout>
+
+            <!-- StackLayout row which contains Transmission, Seats and Doors-->
+            <StackLayout class="transmissionSeatsDoorsSection" orientation="horizontal">
+              <StackLayout id="transmissionFormGroup" style="width:40%">
+                <Label class="headingLabel" text="Transmission"/>
+                <StackLayout orientation="horizontal">
+                  <Label text="Automatic" id="transmissionAutomaticButton"
+                      class="transmissionButton" tap="{{onTapTransmissionAutomatic}}"
+                      backgroundColor="{{isTransmissionManual ? unselectedTagColor : selectedTagColor}}"
+                      style="margin-right:5"/>
+                  <Label text="Manual" id="transmissionManualButton"
+                      class="transmissionButton" tap="{{onTapTransmissionManual}}"
+                      backgroundColor="{{isTransmissionManual ? selectedTagColor : unselectedTagColor}}"/>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout id="seatsFormGroup" style="width:30%">
+                <Label class="headingLabel" text="Seats"/>
+                <StackLayout orientation="horizontal" width="100%">
+                  <Label class="seatsDoorsAddSubtractButton" text="+" width="33%" tap="{{onTapIncreaseSeatCount}}"/>
+                  <StackLayout width="33%">
+                    <Label class="seatsDoorsDisplayBox"
+                      text="{{seatsInput}}"/>
+                  </StackLayout>
+                  <Label class="seatsDoorsAddSubtractButton" text="—" width="33%" tap="{{onTapDecreaseSeatCount}}"/>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout id="doorsFormGroup" style="width:30%">
+                <Label class="headingLabel" text="Doors"/>
+                <StackLayout orientation="horizontal" width="100%">
+                  <Label class="seatsDoorsAddSubtractButton" text="+" width="33%" tap="{{onTapIncreaseDoorCount}}"/>
+                  <StackLayout width="33%">
+                    <Label class="seatsDoorsDisplayBox"
+                      text="{{doorsInput}}"/>
+                  </StackLayout>
+                  <Label class="seatsDoorsAddSubtractButton" text="—" width="33%" tap="{{onTapDecreaseDoorCount}}"/>
+                </StackLayout>
+              </StackLayout>
+            </StackLayout>
+
+            <!-- Description Input Textbox -->
+            <StackLayout class="descriptionSection">
+              <Label class="headingLabel" text="Description"/>
+              <ScrollView class="descriptionTextScrollView">
+                <TextView class="descriptionTextView"
+                  text="{{descriptionInput}}" hint="Describe your car here..."/>
+              </ScrollView>
+            </StackLayout>
+
+            <!-- Modifications -->
+            <StackLayout class="accessoriesSection">
+              <Label class="headingLabel" text="Accessories/Modifications"/>
+              <Label class="descriptionLabel" text="Tap components to indicate presence of modification"/>
+              <StackLayout class="accessoriesInteractiveSection">
+                <AbsoluteLayout height="100%" width="100%">
+                  <Image left="0" top="0" width="320" src="~/images/graphics/image_carmodification_base.png"
+                    id="carModificationBase"/>
+                  <Image left="28" top="69" width="263" src="~/images/graphics/image_carmodification_wheels.png"
+                    tap="{{onTapCarModificationComponent}}" xcomponent="Wheels" id="carModificationWheels"/>
+                  <Image left="0" top="22" width="320" src="~/images/graphics/image_carmodification_body.png"
+                    tap="{{onTapCarModificationComponent}}" xcomponent="Body" id="carModificationBody"/>
+                  <Image left="62" top="3" width="163" src="~/images/graphics/image_carmodification_doors.png"
+                    tap="{{onTapCarModificationComponent}}" xcomponent="Doors" id="carModificationDoors"/>
+                  <Image left="14" top="0" width="224" src="~/images/graphics/image_carmodification_windows.png"
+                    tap="{{onTapCarModificationComponent}}" xcomponent="Windows" id="carModificationWindows"/>
+                  <Image left="-11" top="16" width="64" src="~/images/graphics/image_carmodification_backlights.png"
+                    tap="{{onTapCarModificationComponent}}" xcomponent="Backlights" id="carModificationBacklights"/>
+                </AbsoluteLayout>
+              </StackLayout>
+              <StackLayout orientation="horizontal" class="accessoriesImages">
+                <Label class="addImageButton" text="+"/>
+              </StackLayout>
+            </StackLayout>
+
+            <!-- Contact Details -->
+            <StackLayout style="margin-top: 10;">
+              <Label class="headingLabel" text="Contact Details"/>
+              <Label class="descriptionLabel" textWrap="true" style="margin-bottom: 10"
+                text="Indicate ways to allow potential buyers to reach you instead of only messaging you online"/>
+              <StackLayout orientation="horizontal">
+                <Image class="contactIcon" src="~/images/graphics/image_emailsignup.png"/>
+                <TextField class="inputField" width="100%" hint="johnsmith@example.com" text="{{ emailInput }}"/>
+              </StackLayout>
+              <StackLayout orientation="horizontal" style="margin-top: 10">
+                <Image class="contactIcon" src="~/images/icons/icon_messages_7.png"/>
+                <Label style="font-size: 20; color: #FF415F; margin-right: 5" text="+65"/>
+                <TextField class="inputField" keyboardType="phone" width="100%" hint="88123456" text="{{ phoneNumberInput }}" keyboardType="phone"/>
+              </StackLayout>
+            </StackLayout>
+
+            <!--
+              deprecated code
+            -->
+
+            <!--<Label class="headingLabel" text="Deregistration Value"/>
+            <TextField class="inputField" horizontalAlignment="stretch"
+              text="{{deregistrationValueInput}}"/>
+            <Label class="headingLabel" text="BHP"/>
+            <TextField class="inputField" horizontalAlignment="stretch"
+              text="{{bhpInput}}"/>
+            <Label class="headingLabel" text="Road Tax"/>
+            <TextField class="inputField" horizontalAlignment="stretch"
+              text="{{roadTaxInput}}"/> -->
+            <!--
+              deprecated code ends here
+            -->
+          </StackLayout>
+        </ScrollView>
+        <!-- Preview And Sell Button -->
+      </GridLayout>
+    </CardDrawer:NewListingCardDrawer>
+
+    <!-- List and Sell Button-->
+    <FloatingButtons:BottomFloatingButtonsContainer class="listAndSellButtonContainer" verticalAlignment="bottom"
+      id="listAndSellButton">
+      <StackLayout width="100%">
+        <Image class="listAndSellButton"
+          src="~/images/buttons/button_previewandlist.png"
+          tap="{{onTapListAndSellButton}}"/>
+      </StackLayout>
+    </FloatingButtons:BottomFloatingButtonsContainer>
+
+
+    <!-- Hidden Text Field -->
+    <TextField id="hiddenTextField" width="0" height="0"/>
+
+  </GridLayout>
+
+
+</Page>

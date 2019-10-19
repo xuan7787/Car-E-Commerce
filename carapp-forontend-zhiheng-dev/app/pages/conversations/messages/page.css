@@ -1,0 +1,44 @@
+.pageHeading{
+  font-size: 40;
+  padding: -10 0;
+  color: red;
+}
+.lastOnlineLabel{
+  color: #808080;
+  font-size: 14;
+  margin-top: 5;
+}
+.cardWrapper{
+  padding-bottom: 5;
+}
+.userImageContainer{
+  radius: 50;
+}
+.userImage{
+  border-radius: 50;
+}
+.messageContentWrapper{
+  margin: 0 10;
+}
+.messageContentCard{
+  radius: 20;
+  min-height: 30;
+  background: #fc3758;
+  color: white;
+}
+.messageContentCard.sentMessage{
+  background: #3ebbfc;
+}
+.messageContentCard Label{
+  margin: 8 12;
+}
+.timestampContainer{
+  height: 20;
+  margin-top: 5;
+  margin-bottom: 10;
+  padding: 0 12;
+}
+.timestamp{
+  font-size: 11;
+  color: #bababa;
+}

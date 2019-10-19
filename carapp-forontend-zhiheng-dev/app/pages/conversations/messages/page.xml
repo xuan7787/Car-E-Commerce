@@ -1,0 +1,75 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  xmlns:Card="nativescript-cardview"
+  xmlns:lv="nativescript-ui-listview"
+  actionBarHidden="true">
+  <StackLayout width="100%" height="100%">
+
+    <!-- Heading and back button -->
+    <GridLayout height="60" width="{{viewWidth}}" 
+      class="headingSection" style="margin: 10 0">
+      <StackLayout style="text-align:center">
+        <Label text="Kwan" class="pageHeading"/>
+        <Label text="last online 5 mins ago" class="lastOnlineLabel"/>
+      </StackLayout>
+      <Image src="~/images/icons/icon_back.png" height="30"
+        style="margin-top: 2" horizontalAlignment="left" verticalAlignment="top"
+        tap="{{onTapBackButton}}"/>
+    </GridLayout>
+    
+    <!-- Messages section -->
+    <ScrollView class="messagesScrollView" height="100%" width="100%" style="margin-top: 25">
+      <lv:RadListView class="messagesListView"
+        items="{{messagesData}}"
+        id="messagesListView"
+        width="100%">
+
+        <lv:RadListView.listViewLayout>
+          <lv:ListViewStaggeredLayout scrollDirection="Vertical" spanCount="1"/>
+        </lv:RadListView.listViewLayout>
+
+        <lv:RadListView.itemTemplate>
+          <StackLayout width="100%">
+            <GridLayout width="{{$parents['Page'].viewWidth}}" rows="*,*" columns="30,*,30" style="padding-top: 2">
+              <!-- Other party's user image -->
+              <StackLayout row="0" col="0" rowSpan="2">
+              <Card:CardView class="userImageContainer" visibility="{{ !sent ? 'visible' : 'collapsed' }}" 
+                shadowOpacity="0.35" shadowRadius="2" height="30" width="30">
+                <StackLayout>
+                  <Image src="{{$parents['Page'].senderImage}}" class="userImage"/>
+                </StackLayout>
+              </Card:CardView>
+              </StackLayout>
+
+              <!-- Message contents -->
+              <StackLayout class="messageContentWrapper" row="0" col="1">
+                <Card:CardView class="{{ sent ? 'messageContentCard sentMessage' : 'messageContentCard' }}"
+                  shadowOpacity="0.5" shadowRadius="3" width="100%">
+                  <Label class="messageContent" text="{{ content }}" textWrap="true"/>
+                </Card:CardView>
+              </StackLayout>
+
+              <!-- Self's user image -->
+              <StackLayout row="0" col="2" rowSpan="2">
+                <Card:CardView  rowSpan="2" class="userImageContainer" visibility="{{ sent ? 'visible' : 'collapsed' }}" 
+                  shadowOpacity="0.35" shadowRadius="2" height="30" width="30">
+                  <StackLayout>
+                    <Image src="{{$parents['Page'].senderImage}}" class="userImage"/>
+                  </StackLayout>
+                </Card:CardView>
+              </StackLayout>
+
+              <!-- Timestamp -->
+              <StackLayout row="1" col="1" width="100%" height="20" class="timestampContainer">
+                <Label class="timestamp" text="{{datetime}}" horizontalAlignment="{{ sent ? 'left' : 'right' }}"/>
+              </StackLayout>
+            </GridLayout>
+          </StackLayout>
+        </lv:RadListView.itemTemplate>
+  		
+      </lv:RadListView>
+    </ScrollView>
+
+  </StackLayout>
+
+</Page>

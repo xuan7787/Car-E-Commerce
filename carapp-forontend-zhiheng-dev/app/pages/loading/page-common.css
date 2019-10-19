@@ -1,0 +1,40 @@
+.numberWheelOuterContainer{
+  height: 70;
+  width: 50;
+}
+.numberWheelBaseImage{
+  horizontal-alignment: stretch;
+  vertical-alignment: stretch;
+}
+.numberWheel{
+  height: 770;
+  end-point-translate-y: -700;
+}
+.numberWheel *{
+  height: 70;
+  width: 50;
+  font-size: 70;
+  text-align: center;
+  vertical-alignment: center;
+  color: white;
+}
+.numberWheel.left{
+  duration: 6000;
+  load-complete-base-speed-multiplier: 3;
+  target-digit: 8;
+}
+.numberWheel.right{
+  duration: 1500;
+  load-complete-base-speed-multiplier: 1.5;
+  target-digit: 8;
+}
+.tapToStartLabel{
+  color: gray;
+  text-align: center;
+  margin-bottom: 20;
+  hidden-translate-y: 100;
+  duration: 1000;
+}
+.tapDetector{
+  border-radius: 1;
+}

@@ -1,0 +1,527 @@
+/* Car Image */
+.carImagesContainer{
+  margin-top: 20;
+  border-radius: 10 10 0 0;
+}
+Image.carImage{
+  stretch: aspectFill;
+}
+.closeButton{
+  top: 15;
+  left: 15;
+  height: 30;
+  width: 30;
+}
+/* Car Information */
+GridLayout.carInformation{
+  width: 100%;
+  padding-left: 10;
+  padding-right: 10;
+  rows: auto,auto,auto,auto,auto,auto;
+  columns: *,*;
+  margin-top: 12;
+}
+Image.infoIcon{
+  width: 22;
+  height: 22;
+}
+Label.carName{
+  margin-top: 5;
+  font-size: 18;
+  color: black;
+}
+StackLayout.lister{
+  margin-top: 5;
+  orientation: horizontal;
+}
+Label.listerUsername{
+  color: #FF415F;
+  margin-left: 10;
+  margin-top: 2;
+}
+Label.carPrice{
+  color: #FF415F;
+  font-size: 35;
+  text-align: center;
+}
+StackLayout.depreciation{
+  orientation: horizontal;
+}
+Label.depreciationRate{
+  margin-left: 2;
+  color: gray;
+}
+
+StackLayout.infoRow{
+  margin-top: 4;
+  orientation: horizontal;
+}
+Label.infoHeading{
+  margin-top: 5;
+  font-size: 13;
+  color: darkgray;
+}
+Label.registrationDate, Label.infoText{
+  font-size: 13;
+  margin-left: 3;
+  margin-top: 4;
+}
+Label.timeLeft{
+  margin-top: 2;
+  font-size: 9;
+  color: black;
+}
+Label.infoText{
+  color: black;
+}
+
+/* Description */
+StackLayout.description{
+  margin-top: 10;
+  margin-left: 15;
+  orientation: horizontal;
+}
+Image.descriptionIcon{
+  margin-top: 8;
+
+  width: 15;
+  height: 15;
+}
+Label.descriptionText{
+  width: 100%;
+  padding-top: 3;
+  font-size: 15;
+  line-height: -10;
+  padding-left: 15;
+  padding-right: 15;
+}
+
+/* Modifications */
+.accessoriesSection{
+  margin-top: 15;
+  width: 100%;
+}
+.accessoriesInteractiveSection{
+  width: 320;
+  margin-top: 20;
+  height: 133;
+}
+.accessoriesImagesContainer{
+  margin-top: 15;
+  height: 75;
+  width: 320;
+}
+.accessoriesImage{
+  border-radius: 10;
+  height: 100%;
+  margin-right: 7;
+}
+.accessoriesImage.last{
+  margin-right: 0;
+}
+.marketComparisonSection{
+  margin-top: 20;
+}
+.marketComparisonXaxis Label{
+  font-size: 12;
+  margin-left: 15;
+  margin-right: 15;
+  color: #444;
+}
+.marketComparisonXaxis{
+  margin-bottom: 5;
+}
+.depreciationForecastSection{
+  margin-top: 15;
+  margin-bottom: 10;
+}
+.depreciationForecastGraphWrapper, .marketComparisonChartWrapper{
+  padding-top: 8;
+  padding-right: 8;
+  padding-left: 8;
+  padding-bottom: 0;
+  background: #F1F2F3;
+  border-radius: 15;
+}
+.depreciationForecastXaxis{
+  font-size: 12;
+  margin-top: -3;
+  margin-bottom: 8;
+  color: #444;
+}
+.contactDetails{
+  border-radius: 8;
+  padding: 5;
+  background: #F1F2F3;
+}
+.contactDetails TextView{
+  background: transparent;
+  font-size: 16;
+}
+.sellerProfileSection{
+  margin-left: 30;
+  margin-top: 20;
+  height: 80;
+}
+.sellerIdentity{
+  margin-top: 6;
+  margin-right: 20;
+}
+.sellerName{
+  color: #fc3458;
+  font-size: 28;
+}
+.sellerUsername{
+  margin-top: -8;
+  color: darkgray;
+  font-size: 12;
+}
+.profileCard{
+  height: 100%;
+  width: 100%;
+  color: turquoise;
+  border-width: 1;
+  border-color:darkgray;
+  radius: 10;
+  padding-right: 40;
+}
+.profileMiniIcon{
+  height: 11;
+  margin: 0 2;
+}
+.profilePictureContainer{
+  width: 72;
+  height: 72;
+  border-radius: 100;
+  margin: 0 6;
+}
+.profilePicture{
+  width: 100%;
+  height: 100%;
+}
+.sellerRating{
+  margin-top: 5;
+}
+.ratingStar{
+  height: 12;
+  width: 12;
+  margin: 0 0.5;
+}
+.profileMiniLabel{
+  font-size: 13;
+  color: silver;
+}
+.profileDetails{
+  margin-left: 10;
+  margin-top: 4;
+  margin-bottom: 4;
+}
+.sellerLabel{
+  margin-top: 8;
+  color: white;
+  font-size: 18;
+  border-radius: 8;
+  text-align: center;
+  padding: 2 5;
+  background: rgb(58,136,251);	
+}
+.sellerJoinDate{
+  color: silver;
+  font-size: 11;
+}
+.timestamp{
+  margin-top: 15;
+}
+.timestamp Label{
+    width: 100%;
+    text-align: center;
+    color: silver;
+    font-size: 14;
+}
+.loanCalculator{
+  border-radius: 10;
+  background: #f2f2f2;
+  padding-top: 12;
+  padding-right: 10;
+  padding-left: 10;
+}
+.sellingPriceLabel{
+  padding-top: 3;
+  font-weight: 700;
+  font-size: 24;
+  color: gray;
+}
+.sellingPriceInput{
+  font-size: 34;
+  color: #29C99D
+}
+.darkBackground{
+  width: 100%;
+  background: #8F9091;
+  color: white;
+  border-radius: 3;
+  padding-right: 6;
+  padding-left: 6;
+}
+.darkBackground .value, .lightBackground .value{
+  padding-top: 4;
+  padding-bottom: 4;
+  font-size: 24;
+}
+.darkBackground .description, .lightBackground .description{
+  padding-top: 8;
+  font-size: 16;
+  font-weight: 700;
+}
+.lightBackground{
+  width: 100%;
+  background: #FFF;
+  border-radius: 3;
+  padding-right: 6;
+  padding-left: 6;
+}
+.lightBackground .value{
+  color: silver;
+}
+.loanResultSection{
+  width: 190;
+  height: 75;
+  background: #E5E6E7;
+  border-radius: 8 8 0 0;
+  padding-top: 5;
+  margin-top: 8;
+}
+.tentureLabel{
+  color: silver;
+  font-size: 12;
+  padding-left: 4;
+  padding-right: 4;
+}
+.formulaLabel{
+  width: 100%;
+  text-align: center;
+  color: darkgray;
+  font-size: 15;
+}
+
+.floatingButtonsContainer{
+  height: 100;
+  hidden-translate-y: 100;
+}
+
+/* Card Drawer */
+.BottomCardDrawer{
+  width: 360; /* To change for smaller sized iPhones */
+  duration: 300;
+  margin-bottom: -50;
+  padding-bottom: 50;
+  radius: 20;
+  elevation: 10;
+  background: #fff;
+}
+.drawerHandleDecor{
+  width: 60;
+  height: 5;
+  margin-top: 5;
+  background-color: gainsboro;
+  border-radius: 50;
+  margin-top: 10;
+}
+.drawerTopButton{
+  height: 100;
+  margin: -15;
+}
+
+/* Drawer Chat */
+.drawerMessagesSection{
+  margin-top: -10;
+  padding: 0 8;
+}
+.messagesRecipientName{
+  font-size: 20;
+  color: black;
+}
+.lastOnlineLabel{
+  color: #666;
+  font-size: 10;
+}
+.cardWrapper{
+  padding-bottom: 5;
+}
+.userImageContainer{
+  radius: 50;
+}
+.userImageContainer.left{
+  padding-left: 10;
+}
+.userImageContainer.right{
+  padding-right: 10;
+}
+.userImage{
+  border-radius: 50;
+}
+.messageContentWrapper{
+  margin: 0 10;
+}
+.messageContentCard{
+  radius: 20;
+  min-height: 30;
+  background: #fc3758;
+  color: white;
+}
+.messageContentCard.sentMessage{
+  background: #3ebbfc;
+}
+.messageContentCard Label{
+  margin: 8 12;
+}
+.chatTimestampContainer{
+  height: 20;
+  margin-top: 5;
+  margin-bottom: 10;
+  padding: 0 12;
+}
+.chatTimestamp{
+  font-size: 11;
+  color: #bababa;
+}
+/* Drawer calendar */
+.drawerCalendarSection{
+  margin-top: -35;
+}
+#drawerCalendar{
+  margin: 0 10;
+  height: 190;
+}
+.button {
+  color: #FFFFFF;
+}
+
+.button-positive {
+  background-color: seagreen;
+}
+
+.button-danger {
+  background-color: #db3015;
+}
+
+.button-interstitial {
+  background-color: #808080;
+}
+
+.cal-out-month .cal-cell-top {
+  display: none;
+}
+
+.drawerNewEventContainer{
+  padding-top: 10;
+}
+.calendarNewEventGroup{
+  background: #F1F2F3;
+  border-radius: 8;
+  width: 100%;
+  padding: 8;
+}
+.calendarFormLabel{
+  font-size: 12;
+  color: silver;
+}
+.calendarVenueFormGroup{
+
+}
+.calendarVenueInputWrapper{
+  background: #E5E5E5;
+  border-radius: 8;
+  padding-top: 8;
+  padding-left: 8;
+  padding-right: 22;
+  padding-bottom: 35;
+}
+.calendarTextField{
+  background: #D8D8D8;
+  border-radius: 6;
+  height: 20;
+  font-size: 14;
+  padding-left: 2;
+}
+.calendarTextView{
+  background: #D8D8D8;
+  font-size: 14;
+  border-radius: 6;
+  padding-left: 2;
+  padding-right: 2;
+}
+.calendarConfirmButtonCircle{
+  width: 30;
+  height: 30;
+  background: #A4D542;
+  margin-top: 5;
+  border-radius: 35;
+}
+.calendarConfirmButton{
+  width: 20;
+  height: 20;
+  
+  
+}
+
+.calendarEvent{
+  margin-top: 15;
+}
+
+.event_date{
+  text-align: center;
+  font-size: 28px;
+  line-height: -20pt;
+  margin-left: -7;
+}
+
+.event_info{
+  background-color: #FF3354;
+  color:white;
+  border-radius: 8;
+}
+
+.event_title{
+  margin-left: 6%;
+  padding-top: 25px;
+  font-size: 22;
+}
+
+.event_location{
+  font-size: 10;
+  margin-top: 20;
+  margin-left: 10;
+
+}
+
+.event_timing{
+  font-size: 10;
+  margin-left: 6%;
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
+
+.event_description{
+  font-size: 10;
+  margin-bottom: 35px;
+  margin-left: 10;
+}
+
+#event_info_2{
+  background-color: #3598db;
+}
+
+/* ScrollView Extender */
+StackLayout.scrollViewExtender{
+  height: 100;
+}
+
+.border-red{
+  border-width: 1;
+  border-color: red;
+}
+.border-blue{
+  border-width: 1;
+  border-color: blue;
+}

@@ -1,0 +1,153 @@
+<Page loaded="onPageLoaded" unloaded="onPageUnloaded"
+  xmlns="http://www.nativescript.org/tns.xsd"
+  actionBarHidden="true">
+  <StackLayout width="100%" height="100%" class="outerAbsoluteLayout">
+    <!--===== Close Button =====-->
+    <StackLayout width="{{viewWidth}}" height="30" style="margin-top: 15" orientation="horizontal">
+      <Image src="~/images/icons/icon_close_gray.png" tap="{{ onTapCloseButton }}"/>
+    </StackLayout>
+
+    <ScrollView height="100%">
+    <StackLayout>
+
+    <!--===== Loan calculator =====-->
+    <StackLayout class="loanCalculatorSection" width="{{ viewWidth }}" style="margin-top: 20">
+      <StackLayout class="loanCalculatorHeading" orientation="horizontal" style="margin-bottom: 15">
+        <Image src="~/images/icons/icon_loan.png" class="infoIcon"/>
+        <Label text="Loan Calculator" class="infoHeading" style="margin-left: 5"/>
+      </StackLayout>
+      <StackLayout class="loanCalculator">
+
+        <!-- Heading -->
+        <FlexboxLayout width="100%" orientation="horizontal" justifyContent="space-between"
+          style="margin-bottom: 15">
+          <Label class="sellingPriceLabel" text="Selling Price"/>
+          <Label class="sellingPriceInput" text="{{ 'S$'+sellingPrice}}" tap="{{ onTapSellingPriceLabel }}"/>
+        </FlexboxLayout>
+
+        <!-- First slider -->
+        <StackLayout width="100%">
+          <FlexboxLayout class="darkBackground" justifyContent="space-between" style="margin-bottom: 8">
+            <Label class="value" text="{{ 'S$' + downpayment  }}" tap="{{ onTapDownpaymentValue }}"/>
+            <Label class="description" text="Downpayment"/>
+          </FlexboxLayout>
+          <Slider id="downpaymentSlider" width="100%" value="{{downpayment}}" minValue="0" maxValue="{{ sellingPrice }}"/>
+          <FlexboxLayout class="darkBackground" justifyContent="space-between" style="margin-top: 8">
+            <Label class="value" text="{{ 'S$' + (sellingPrice - downpayment)  }}" tap="{{ onTapLoanAmountValue }}"/>
+            <Label class="description" text="Loan Amount"/>
+          </FlexboxLayout>
+        </StackLayout>
+
+        <!-- Second slider -->
+        <StackLayout width="100%" style="margin-top: 5">
+          <FlexboxLayout class="lightBackground" justifyContent="space-between" style="margin-bottom: 8">
+            <Label class="value" text="{{ interestRate+'%' }}"/>
+            <Label class="description" text="Interest Rate % p.a"/>
+          </FlexboxLayout>
+          <Slider id="interestRateSlider" width="100%" value="{{ interestRateRaw }}" minValue="1.98" maxValue="2.98"/>
+        </StackLayout>
+
+        <!-- Third slider -->
+        <StackLayout width="100%" style="margin-top: 5">
+          <FlexboxLayout class="lightBackground" justifyContent="space-between" style="margin-bottom: 8">
+            <Label class="value" text="{{ loanTenture + ' months' }}" tap="{{ onTapLoanTentureValue }}"/>
+            <Label class="description" text="Loan Tenture (months)"/>
+          </FlexboxLayout>
+          <Slider id="loanTentureSlider" width="100%" value="{{ loanTenture }}" minValue="12" maxValue="84"/>
+          <FlexboxLayout justifyContent="space-between">
+            <Label class="tentureLabel" text="12"/>
+            <Label class="tentureLabel" text="84"/>
+          </FlexboxLayout>
+        </StackLayout>
+
+        <!-- Bottom section -->
+        <StackLayout width="100%">
+          <Label class="formulaLabel" text="{{'+ Instalment S$'+loanInstallment+'/month'}}"/>
+          <Label class="formulaLabel" text="+ Transfer Fee $25"/>
+          
+          <GridLayout width="100%">
+            <GridLayout rows="auto,auto" class="loanResultSection" horizontalAlignment="center">
+              <Label horizontalAlignment="center" style="font-size: 15; color: dimgray" text="Total Upfront"/>
+              <Label row="1" horizontalAlignment="center" class="sellingPriceInput" text="{{'S$'+loanUpfront}}"/>
+            </GridLayout>
+          </GridLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </StackLayout>
+
+    <!--===== Deprecation Forecast =====-->
+    <StackLayout class="depreciationForecastSection" width="{{ viewWidth }}" style="margin-top: 15">
+      <StackLayout class="loanCalculatorHeading" orientation="horizontal" style="margin-bottom: 15">
+        <Image src="~/images/icons/icon_depreciation.png" class="infoIcon"/>
+        <Label text="Depreciation Forecast" class="infoHeading" style="margin-left: 5"/>
+      </StackLayout>
+
+      <StackLayout class="depreciationForecast">
+        <!-- Heading -->
+        <FlexboxLayout width="100%" orientation="horizontal" justifyContent="space-between"
+            style="margin-bottom: 15">
+          <Label class="sellingPriceLabel" text="Selling Price"/>
+          <Label class="sellingPriceInput" text="{{ 'S$'+sellingPrice}}" tap="{{ onTapSellingPriceLabel }}"/>
+        </FlexboxLayout>
+
+        <!-- First Slider -->
+        <StackLayout width="100%">
+          <FlexboxLayout class="darkBackground" justifyContent="space-between" style="margin-bottom: 8">
+            <Label class="value" text="{{ depreciationYearsRemaining }}" tap="{{ onTapDepreciationYearsRemainingValue }}"/>
+            <Label class="description" text="Years Remaining"/>
+          </FlexboxLayout>
+          <Slider id="depreciationYearsRemainingSlider" width="100%" value="{{ depreciationYearsRemainingRaw }}" minValue="1" maxValue="10"/>
+        </StackLayout>
+
+        <!-- ARF/OMV Switch -->
+        <FlexboxLayout width="100%" style="margin-top: 5; margin-bottom: 5" justifyContent="center">
+          <Label text="ARF" style="color: #FF415F; margin-right: 6;"/>
+          <Switch style="background: #e8e8e8; color: #FF415F"></Switch>
+          <Label text="OMV" style="color: #3BBDFC; margin-left: 6;"/>
+        </FlexboxLayout>
+
+        <!-- Second Slider -->
+        <StackLayout width="100%" style="margin-top: 5">
+          <StackLayout class="depreciationInfoSection" orientation="horizontal">
+            <StackLayout class="depreciationInfoIcon">
+              <Label text="i"/>
+            </StackLayout>
+            <Label class="depreciationInfoLabel" textWrap="true">
+              <FormattedString>
+                <Span text="OMV " color="#3BBDFC"/>
+                <Span text="for registration dates "/>
+                <Span text="before March 2012" color="#3BBDFC"/>
+                <Span text=", "/>
+                <Span text="ARF " color="#FF415F"/>
+                <Span text="for dates "/>
+                <Span text="after March 2012" color="#FF415F"/>
+              </FormattedString>
+            </Label>
+          </StackLayout>
+          <FlexboxLayout class="lightBackground" justifyContent="space-between" style="margin-bottom: 8">
+            <Label class="value" text="{{ 'S$ ' + arfValue }}" tap="{{ onTapArfValue }}"/>
+            <Label class="description" text=""/>
+          </FlexboxLayout>
+          <Slider id="arfSlider" width="100%" value="{{ arfValue }}" minValue="0" maxValue="100000"/>
+        </StackLayout>
+
+        <!-- Bottom section -->
+        <FlexboxLayout width="100%" justifyContent="center">
+          <StackLayout style="padding-top: 55; padding-right: 10">
+            <Image src="{{ depreciationPositive ? '~/images/icons/icon_uparrow.png' : '~/images/icons/icon_downarrow.png' }}" class="depreciationArrow"/>
+          </StackLayout>
+          <GridLayout rows="auto,auto" class="depreciationResultSection" horizontalAlignment="center">
+            <Label horizontalAlignment="center" style="font-size: 15; color: dimgray" text="Depreciation"/>
+            <Label row="1" horizontalAlignment="center" class="{{ depreciationPositive ? 'sellingPriceInput' : 'depreciationNegative' }}" text="{{'S$'+depreciationDisplay}}"/>
+          </GridLayout>
+          <Label class="depreciationYearlyLabel" text="yearly"/>
+        </FlexboxLayout>
+      </StackLayout>
+    </StackLayout>
+      
+    </StackLayout>
+    </ScrollView>
+
+  </StackLayout>
+</Page>

@@ -1,0 +1,5 @@
+@import '~nativescript-theme-core/css/core.light.css';
+
+Page{
+  font-family: 'Avenir Next';
+}
