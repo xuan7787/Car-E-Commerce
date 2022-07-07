@@ -21,7 +21,7 @@
     "@progress-nativechat/nativescript-nativechat": "2.0.3",
     "fs": "0.0.1-security",
     "kinvey-nativescript-sdk": "3.12.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "nativescript-accelerometer": "2.0.1",
     "nativescript-auto-fit-text": "^1.0.0",
     "nativescript-background-http": "3.3.1",
